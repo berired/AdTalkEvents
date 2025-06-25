@@ -1,0 +1,132 @@
+.gallery-container {
+  min-height: 100vh;
+  background: var(--color-bg);
+  color: var(--color-text);
+  padding: 3rem 0 4rem 0;
+}
+
+.gallery-title, .section-title {
+  color: var(--color-text);
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gallery-title {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: sectionFadeIn 0.7s 0.1s forwards;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  opacity: 0;
+  transform: translateY(40px);
+  animation: sectionFadeIn 0.8s 0.2s forwards;
+}
+
+@keyframes sectionFadeIn {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.gallery-item {
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(200,35,51,0.07);
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+  background: var(--color-card);
+}
+
+.gallery-item:hover {
+  transform: scale(1.04);
+  box-shadow: 0 10px 25px rgba(200,35,51,0.13);
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  display: block;
+  transition: filter 0.3s, transform 0.4s cubic-bezier(0.4,0,0.2,1);
+}
+
+.gallery-item:hover img {
+  transform: scale(1.12);
+}
+
+/* Modal Styles */
+.gallery-modal {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(30, 30, 40, 0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  animation: fadeIn 0.3s;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.gallery-modal-content {
+  background: var(--color-card);
+  border-radius: 15px;
+  padding: 1.5rem;
+  max-width: 90vw;
+  max-height: 90vh;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.gallery-modal-content img {
+  max-width: 80vw;
+  max-height: 70vh;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.12);
+}
+
+.gallery-modal-close {
+  position: absolute;
+  top: 10px;
+  right: 18px;
+  background: none;
+  border: none;
+  font-size: 2.2rem;
+  color: var(--color-secondary);
+  cursor: pointer;
+  z-index: 10;
+  transition: color 0.2s;
+}
+
+.gallery-modal-close:hover {
+  color: var(--color-primary);
+}
+
+@media (max-width: 600px) {
+  .gallery-item img {
+    height: 140px;
+  }
+  .gallery-modal-content img {
+    max-width: 95vw;
+    max-height: 50vh;
+  }
+  .gallery-container {
+    padding: 1.5rem 0.5rem;
+  }
+} 
