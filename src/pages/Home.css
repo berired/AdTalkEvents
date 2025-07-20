@@ -121,7 +121,7 @@
 
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
   width: 100%;
   max-width: 1400px;
@@ -359,6 +359,58 @@
   font-style: normal;
 }
 
+.company-values {
+  margin: 3rem auto 2rem auto;
+  max-width: 900px;
+}
+
+.company-values h3 {
+  color: var(--color-primary);
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.value-item {
+  background: var(--color-bg-light);
+  padding: 1.5rem;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(200,35,51,0.05);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.value-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(200,35,51,0.1);
+}
+
+.value-icon {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.value-item h4 {
+  color: var(--color-primary);
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.value-item p {
+  color: var(--color-secondary);
+  font-size: 0.9rem;
+  margin: 0;
+}
+
 .why-choose-us {
   margin: 3rem auto 0 auto;
   background: var(--color-bg-light);
@@ -405,6 +457,68 @@
   display: inline-block;
 }
 
+/* Manpower Section */
+.manpower-section {
+  padding: 5rem 2rem;
+  background: var(--color-bg-light);
+  box-shadow: 0 2px 12px 0 rgba(200,35,51,0.04);
+  opacity: 0;
+  transform: translateY(40px);
+  animation: sectionFadeIn 0.8s 0.2s forwards;
+}
+
+.manpower-intro {
+  text-align: center;
+  font-size: 1.15rem;
+  color: var(--color-secondary);
+  margin: 0 0 2.5rem 0;
+  font-weight: 500;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: sectionFadeIn 0.7s 0.1s forwards;
+}
+
+.manpower-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.manpower-card {
+  background: var(--color-card);
+  padding: 2rem;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(200,35,51,0.07);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.manpower-card:hover {
+  transform: scale(1.04);
+  box-shadow: 0 15px 30px rgba(200,35,51,0.13);
+}
+
+.manpower-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.manpower-card h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  margin: 0 0 1rem 0;
+}
+
+.manpower-card p {
+  color: var(--color-secondary);
+  line-height: 1.6;
+  margin: 0;
+}
+
 @media screen and (max-width: 768px) {
   .hero-cta-btn {
     font-size: 1rem;
@@ -413,6 +527,20 @@
   .client-quote {
     font-size: 1rem;
     padding: 1.2rem 1rem 1rem 1.2rem;
+  }
+  .values-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .value-item {
+    padding: 1.2rem;
+  }
+  .manpower-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  .manpower-card {
+    padding: 1.5rem;
   }
   .why-choose-us {
     padding: 1.5rem 1rem 1rem 1rem;

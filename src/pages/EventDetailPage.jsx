@@ -12,54 +12,54 @@ function EventDetailPage() {
   const eventsData = [
     {
       id: 1,
-      eventName: 'Tech Innovation Summit 2024',
-      date: 'March 15, 2024',
-      description: 'Join us for the most anticipated technology conference of the year. Featuring keynote speakers from leading tech companies, interactive workshops, and networking opportunities with industry professionals. This summit brings together innovators, entrepreneurs, and technology enthusiasts to explore the latest trends and breakthroughs in the tech world. Our comprehensive program includes panel discussions, hands-on workshops, and exclusive networking sessions designed to foster collaboration and innovation. Don\'t miss this opportunity to connect with industry leaders and discover the future of technology.',
+      eventName: 'Global Technology Summit 2025',
+      date: 'March 15-17, 2025',
+      description: 'Join industry leaders for the premier technology conference of the year. Featuring C-suite executives from Fortune 500 companies, groundbreaking product launches, and strategic networking opportunities. This three-day summit will explore emerging technologies, digital transformation strategies, and the future of business innovation. Attendees will gain insights into artificial intelligence, blockchain, cybersecurity, and cloud computing from industry thought leaders. The event includes interactive workshops, executive roundtables, and a technology expo showcasing the latest innovations. Perfect for CTOs, IT directors, technology managers, and business leaders looking to stay ahead of the digital curve.',
       image1: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=500&h=300&fit=crop',
       image2: 'https://images.unsplash.com/photo-1515187029135-18ee286d815b?w=500&h=300&fit=crop',
       image3: 'https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=500&h=300&fit=crop'
     },
     {
       id: 2,
-      eventName: 'Corporate Leadership Conference',
-      date: 'April 22, 2024',
-      description: 'A comprehensive leadership development conference designed for executives and managers. Learn from industry leaders, participate in leadership workshops, and gain insights into effective management strategies. This event focuses on building strong leadership skills and fostering organizational growth. The conference features expert speakers, interactive sessions, and practical workshops that will help you develop the skills needed to lead teams effectively in today\'s dynamic business environment.',
+      eventName: 'Executive Leadership Forum',
+      date: 'April 22-23, 2025',
+      description: 'An exclusive two-day leadership development conference designed for C-level executives and senior management. Learn from renowned business leaders, participate in executive roundtables, and gain insights into strategic leadership, organizational transformation, and high-performance team management. This forum focuses on contemporary leadership challenges including remote team management, crisis leadership, and sustainable business practices. Featured speakers include bestselling authors, Fortune 500 CEOs, and leadership consultants who will share proven strategies for driving organizational success.',
       image1: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=500&h=300&fit=crop',
       image2: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=500&h=300&fit=crop',
       image3: 'https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=500&h=300&fit=crop'
     },
     {
       id: 3,
-      eventName: 'Creative Marketing Workshop',
-      date: 'May 10, 2024',
-      description: 'An intensive workshop focused on creative marketing strategies and digital innovation. Participants will learn about content creation, social media marketing, and brand development. Hands-on sessions will help you develop practical skills for modern marketing campaigns. This workshop is perfect for marketing professionals, entrepreneurs, and anyone looking to enhance their digital marketing skills. You\'ll leave with actionable strategies and tools to implement immediately.',
+      eventName: 'Digital Marketing Masterclass',
+      date: 'May 10-12, 2025',
+      description: 'Comprehensive three-day intensive workshop covering advanced digital marketing strategies, brand positioning, and customer engagement. Led by industry experts from top marketing agencies, this masterclass includes hands-on sessions, case studies, and personalized strategy development for maximum ROI. Topics include social media marketing, content strategy, marketing automation, data analytics, and performance measurement. Participants will learn to create integrated marketing campaigns that drive measurable business results.',
       image1: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&h=300&fit=crop',
       image2: 'https://images.unsplash.com/photo-1557838923-2985c318be48?w=500&h=300&fit=crop',
       image3: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=500&h=300&fit=crop'
     },
     {
       id: 4,
-      eventName: 'Startup Networking Night',
-      date: 'June 5, 2024',
-      description: 'Connect with fellow entrepreneurs, investors, and startup enthusiasts in this dynamic networking event. Share ideas, build partnerships, and discover new opportunities in the startup ecosystem. Perfect for anyone looking to grow their network and business. This event provides a relaxed atmosphere for meaningful conversations and potential collaborations. Whether you\'re a seasoned entrepreneur or just starting your journey, you\'ll find valuable connections and insights.',
+      eventName: 'Innovation & Investment Summit',
+      date: 'June 5-6, 2025',
+      description: 'Connect with venture capitalists, angel investors, and successful entrepreneurs in this high-level networking summit. Featuring startup pitch competitions, investor panels, and exclusive networking sessions designed to foster strategic partnerships and funding opportunities. This summit brings together the startup ecosystem including accelerators, incubators, and corporate venture arms. Attendees will learn about funding strategies, market validation, scaling operations, and exit planning from industry veterans.',
       image1: 'https://images.unsplash.com/photo-1515187029135-18ee286d815b?w=500&h=300&fit=crop',
       image2: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=500&h=300&fit=crop',
       image3: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=500&h=300&fit=crop'
     },
     {
       id: 5,
-      eventName: 'Digital Transformation Forum',
-      date: 'July 18, 2024',
-      description: 'Explore the future of business in the digital age. This forum brings together experts to discuss digital transformation strategies, emerging technologies, and their impact on various industries. Learn how to adapt and thrive in the rapidly evolving digital landscape. The forum includes keynote presentations, panel discussions, and interactive sessions focused on practical implementation strategies. Discover how leading organizations are leveraging technology to drive innovation and growth.',
+      eventName: 'Digital Transformation Conference',
+      date: 'July 18-19, 2025',
+      description: 'Explore the future of business operations through digital transformation. This conference brings together CTOs, IT directors, and digital strategists to discuss implementation strategies, emerging technologies, cybersecurity, and change management in the digital era. Sessions cover cloud migration, automation, data analytics, and organizational change management. Learn how leading companies are leveraging technology to improve efficiency, enhance customer experience, and drive innovation.',
       image1: 'https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=500&h=300&fit=crop',
       image2: 'https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=500&h=300&fit=crop',
       image3: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&h=300&fit=crop'
     },
     {
       id: 6,
-      eventName: 'Sustainability & Innovation Expo',
-      date: 'August 12, 2024',
-      description: 'Discover sustainable solutions and innovative approaches to environmental challenges. This expo showcases cutting-edge technologies and practices that promote sustainability across industries. Connect with like-minded professionals committed to creating a better future. The expo features interactive exhibits, expert presentations, and networking opportunities focused on sustainable business practices. Learn about the latest innovations in renewable energy, waste reduction, and environmental conservation.',
+      eventName: 'Sustainability & Corporate Responsibility Expo',
+      date: 'August 12-14, 2025',
+      description: 'Discover sustainable business practices and corporate responsibility initiatives that drive both profit and positive impact. This expo features case studies from leading companies, sustainability technology showcases, and networking opportunities with ESG professionals and sustainability consultants. Topics include environmental impact reduction, social responsibility programs, sustainable supply chain management, and ESG reporting. Perfect for sustainability officers, corporate executives, and business leaders committed to creating positive environmental and social impact.',
       image1: 'https://images.unsplash.com/photo-1557838923-2985c318be48?w=500&h=300&fit=crop',
       image2: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=500&h=300&fit=crop',
       image3: 'https://images.unsplash.com/photo-1515187029135-18ee286d815b?w=500&h=300&fit=crop'
