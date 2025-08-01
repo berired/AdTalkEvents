@@ -8,14 +8,29 @@ function Home() {
     { name: 'Ford', logo: ''},
     { name: 'Casio', logo: ''},
     { name: 'Sunnies Studios', logo: ''},
-    { name: 'Ox & Palm', logo: ''}
+    { name: 'Federated Distributors Inc', logo: ''}
   ];
 
   const services = [
     {
       title: 'Brand Activations',
-      description: 'Strategic brand campaigns and experiential marketing solutions that create lasting impressions and drive consumer engagement.',
+      description: 'Bridge the gap between your market and your brand through an unforgettable experience. We’ll transform how your customers see your company and products by bringing your vision to life.',
       icon: '🎯'
+    },
+    {
+      title: 'Manpower Deployment',
+      description: 'Skilled personnel deployment including flyering agents, sales associates, merchandisers, samplers, push girls, and brand ambassadors.',
+      icon: '👥'
+    },
+    {
+      title: 'Conventions & Trade Shows',
+      description: 'Full-service convention management including booth setup, staff coordination, and visitor engagement activities.',
+      icon: '🏢'
+    },
+    {
+      title: 'Merch Installation for Gen Trade & Key Accounts',
+      description: 'Professional merchandising installation services for general trade outlets and key account establishments.',
+      icon: '🛒'
     },
     {
       title: 'Product Launching, MOA Signing, and Concert Series',
@@ -26,22 +41,8 @@ function Home() {
       title: 'Dropbox Management',
       description: 'Comprehensive management of promotional materials, inventory tracking, and distribution logistics for retail operations.',
       icon: '📦'
-    },
-    {
-      title: 'Merch Installation for Gen Trade & Key Accounts',
-      description: 'Professional merchandising installation services for general trade outlets and key account establishments.',
-      icon: '🛒'
-    },
-    {
-      title: 'Conventions & Trade Shows',
-      description: 'Full-service convention management including booth setup, staff coordination, and visitor engagement activities.',
-      icon: '🏢'
-    },
-    {
-      title: 'Manpower Deployment',
-      description: 'Skilled personnel deployment including flyering agents, sales associates, merchandisers, samplers, push girls, and brand ambassadors.',
-      icon: '👥'
     }
+    
   ];
 
   return (
@@ -135,7 +136,7 @@ function Home() {
       {/* About Section */}
       <section className="about-section">
         <div className="about-content">
-          <h2 className="section-title">About AdTalk Events</h2>
+          <h2 className="section-title">About Adtalk Events</h2>
           <p className="about-description">
             We are a dynamic group of people working together to <b>source, train,</b> and <b>manage </b> the right manpower
             required for any brand/product activation in Gen Trade and Key Account Outlets, Events (Festivals) and Sales Conventions nationwide.

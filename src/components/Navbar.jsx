@@ -12,7 +12,7 @@ function Navbar() {
     <nav className="navbar">
       <div className="navbar-container">
         <Link to="/" className="navbar-logo" onClick={closeMenu}>
-          AdTalk Events
+          Adtalk Events
         </Link>
         <ul className="nav-menu">
           <li className="nav-item">
