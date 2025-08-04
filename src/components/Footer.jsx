@@ -9,7 +9,7 @@ function Footer() {
           {/* Company Info */}
           <div className="footer-section">
             <div className="footer-logo">
-              <h3>Adtalk Events</h3>
+              <h3>Adtalk Events Solutions Inc.</h3>
               <p className="footer-tagline">You Talk, We Listen</p>
             </div>
             <p className="footer-description">
@@ -71,7 +71,7 @@ function Footer() {
         {/* Footer Bottom */}
         <div className="footer-bottom">
           <div className="footer-bottom-content">
-            <p>&copy; {new Date().getFullYear()} Adtalk Events. All rights reserved.</p>
+            <p>&copy; {new Date().getFullYear()} Adtalk Events Solutions Inc. All rights reserved.</p>
             <p>Professional brand activation and promotional marketing solutions nationwide.</p>
           </div>
         </div>
