@@ -129,14 +129,15 @@ function Home() {
         <h2 className="section-title">Professional Manpower Deployment</h2>
         <p className="manpower-intro">Our skilled personnel are trained to represent your brand with excellence:</p>
         <div className="manpower-grid">
+
           <div className="manpower-card">
-            <div className="manpower-card">
             <div className="manpower-icon">🔍</div>
             <h3>Sourcing</h3>
             <p>We have a good number of contacts and agents that provides us a pool of quality candidates
               in line with the client's preference and requirements.
             </p>
           </div>
+          <div className="manpower-card">
             <div className="manpower-icon">📚</div>
             <h3>Training</h3>
             <p>We make our training as comprehensive as possible. It is our duty as people managers to ensure proper product knowledge, project mechanics and compliance with certain
