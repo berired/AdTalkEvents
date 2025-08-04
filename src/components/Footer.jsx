@@ -22,8 +22,8 @@ function Footer() {
             <h4>Quick Links</h4>
             <ul className="footer-links">
               <li><Link to="/">Home</Link></li>
-              <li><Link to="/events">Events</Link></li>
-              <li><Link to="/gallery">Gallery</Link></li>
+              <li><Link to="/services">Services</Link></li>
+              <li><Link to="/gallery">Adtalk Gallery</Link></li>
               <li><Link to="/contact">Contact</Link></li>
             </ul>
           </div>
@@ -33,11 +33,9 @@ function Footer() {
             <h4>Our Services</h4>
             <ul className="footer-links">
               <li>Brand Activations</li>
-              <li>Product Launching</li>
               <li>Manpower Deployment</li>
               <li>Conventions & Trade Shows</li>
-              <li>Dropbox Management</li>
-              <li>Merch Installation</li>
+              <li>Merchandise Installation & Management</li>
             </ul>
           </div>
 

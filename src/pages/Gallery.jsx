@@ -31,7 +31,7 @@ function Gallery() {
 
   return (
     <div className="gallery-container">
-      <h1 className="gallery-title">Event Gallery</h1>
+      <h1 className="gallery-title">Adtalk Gallery</h1>
       <div className="gallery-grid">
         {images.map((img, idx) => (
           <div key={idx} className="gallery-item" onClick={() => openModal(img)}>

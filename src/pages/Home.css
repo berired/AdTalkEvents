@@ -128,6 +128,17 @@
   margin: 0 auto;
 }
 
+.service-card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.service-card-link:hover {
+  text-decoration: none;
+  color: inherit;
+}
+
 .service-card {
   background: var(--color-card);
   padding: 2rem;
@@ -135,6 +146,7 @@
   text-align: center;
   box-shadow: 0 5px 15px rgba(200,35,51,0.07);
   transition: transform 0.3s, box-shadow 0.3s;
+  height: 100%;
 }
 
 .service-card:hover {
@@ -231,6 +243,113 @@
   margin: 0 0 1.5rem 0;
 }
 
+/* Why Choose Us Section */
+.why-choose-section {
+  padding: 5rem 2rem;
+  background: var(--color-bg);
+  color: var(--color-text);
+  opacity: 0;
+  transform: translateY(40px);
+  animation: sectionFadeIn 0.8s 0.3s forwards;
+}
+
+.why-choose-content {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.why-choose-list {
+  list-style: none;
+  padding: 0;
+  margin: 2rem 0 0 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  text-align: left;
+}
+
+.why-choose-list li {
+  background: var(--color-card);
+  padding: 1.5rem;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(200,35,51,0.07);
+  position: relative;
+  padding-left: 3rem;
+  line-height: 1.6;
+  color: var(--color-secondary);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.why-choose-list li:before {
+  content: "✓";
+  position: absolute;
+  left: 1rem;
+  top: 1.5rem;
+  color: var(--color-primary);
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.why-choose-list li:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(200,35,51,0.13);
+}
+
+.why-choose-intro {
+  font-size: 1.1rem;
+  color: var(--color-secondary);
+  line-height: 1.7;
+  margin-bottom: 3rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.why-choose-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.why-choose-item {
+  background: var(--color-card);
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(200, 35, 51, 0.08);
+  transition: all 0.3s ease;
+  text-align: left;
+  border: 1px solid rgba(200, 35, 51, 0.1);
+}
+
+.why-choose-item:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 40px rgba(200, 35, 51, 0.15);
+  border-color: var(--color-primary);
+}
+
+.why-choose-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1.2rem;
+  display: inline-block;
+}
+
+.why-choose-item h3 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-bottom: 1rem;
+  line-height: 1.4;
+}
+
+.why-choose-item p {
+  color: var(--color-secondary);
+  line-height: 1.7;
+  font-size: 0.95rem;
+}
+
 /* Responsive Design */
 @media screen and (max-width: 768px) {
   .hero-title {
@@ -261,6 +380,37 @@
   .service-card,
   .client-card {
     padding: 1.5rem;
+  }
+  
+  .why-choose-section {
+    padding: 3rem 1rem;
+  }
+  
+  .why-choose-list {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .why-choose-list li {
+    padding: 1.2rem;
+    padding-left: 2.5rem;
+  }
+  
+  .why-choose-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .why-choose-item {
+    padding: 1.5rem;
+  }
+  
+  .why-choose-item h3 {
+    font-size: 1.2rem;
+  }
+  
+  .why-choose-icon {
+    font-size: 2rem;
   }
 }
 
@@ -517,6 +667,33 @@
   color: var(--color-secondary);
   line-height: 1.6;
   margin: 0;
+}
+
+.manpower-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.manpower-card ul li {
+  color: var(--color-secondary);
+  line-height: 1.6;
+  margin-bottom: 0.5rem;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.manpower-card ul li:before {
+  content: '•';
+  color: var(--color-primary);
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+  font-size: 1.2rem;
+}
+
+.manpower-card ul li:last-child {
+  margin-bottom: 0;
 }
 
 @media screen and (max-width: 768px) {

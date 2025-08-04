@@ -26,11 +26,11 @@ function Navbar() {
           </li>
           <li className="nav-item">
             <Link 
-              to="/events" 
-              className={`nav-link ${location.pathname === '/events' ? 'active' : ''}`}
+              to="/services" 
+              className={`nav-link ${location.pathname === '/services' ? 'active' : ''}`}
               onClick={closeMenu}
             >
-              Events
+              Services
             </Link>
           </li>
           <li className="nav-item">
@@ -48,7 +48,7 @@ function Navbar() {
               className={`nav-link ${location.pathname === '/gallery' ? 'active' : ''}`}
               onClick={closeMenu}
             >
-              Gallery
+              Adtalk Gallery
             </Link>
           </li>
         </ul>
@@ -68,9 +68,9 @@ function Navbar() {
           <nav className="mobile-menu" onClick={e => e.stopPropagation()}>
             <button className="close-mobile-menu" aria-label="Close menu" onClick={closeMenu}>&times;</button>
             <Link to="/" className={`mobile-link ${location.pathname === '/' ? 'active' : ''}`} onClick={closeMenu}>Home</Link>
-            <Link to="/events" className={`mobile-link ${location.pathname === '/events' ? 'active' : ''}`} onClick={closeMenu}>Events</Link>
+            <Link to="/services" className={`mobile-link ${location.pathname === '/services' ? 'active' : ''}`} onClick={closeMenu}>Services</Link>
             <Link to="/contact" className={`mobile-link ${location.pathname === '/contact' ? 'active' : ''}`} onClick={closeMenu}>Contact</Link>
-            <Link to="/gallery" className={`mobile-link ${location.pathname === '/gallery' ? 'active' : ''}`} onClick={closeMenu}>Gallery</Link>
+            <Link to="/gallery" className={`mobile-link ${location.pathname === '/gallery' ? 'active' : ''}`} onClick={closeMenu}>Adtalk Gallery</Link>
           </nav>
         </div>
       )}
@@ -78,4 +78,4 @@ function Navbar() {
   )
 }
 
-export default Navbar 
+export default Navbar
