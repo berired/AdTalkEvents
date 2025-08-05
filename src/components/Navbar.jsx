@@ -12,7 +12,7 @@ function Navbar() {
     <nav className="navbar">
       <div className="navbar-container">
         <Link to="/" className="navbar-logo" onClick={closeMenu}>
-          Adtalk Events Solutions Inc.
+          Adtalk Event Solutions Inc.
         </Link>
         <ul className="nav-menu">
           <li className="nav-item">
@@ -48,7 +48,7 @@ function Navbar() {
               className={`nav-link ${location.pathname === '/gallery' ? 'active' : ''}`}
               onClick={closeMenu}
             >
-              Adtalk Gallery
+              Gallery
             </Link>
           </li>
         </ul>

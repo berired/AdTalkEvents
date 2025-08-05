@@ -536,12 +536,13 @@
   border-radius: 12px;
   text-align: center;
   box-shadow: 0 2px 8px rgba(200,35,51,0.05);
-  transition: transform 0.3s, box-shadow 0.3s;
+  transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
 }
 
 .value-item:hover {
   transform: translateY(-5px);
   box-shadow: 0 5px 15px rgba(200,35,51,0.1);
+  background: var(--color-primary);
 }
 
 .value-icon {
@@ -550,16 +551,26 @@
 }
 
 .value-item h4 {
-  color: var(--color-primary);
+  color: black;
   font-size: 1.1rem;
   font-weight: 600;
   margin-bottom: 0.5rem;
+  transition: color 0.3s;
+}
+
+.value-item:hover h4 {
+  color: white;
 }
 
 .value-item p {
-  color: var(--color-secondary);
+  color: #000000;
   font-size: 0.9rem;
   margin: 0;
+  transition: color 0.3s;
+}
+
+.value-item:hover p {
+  color: white;
 }
 
 .why-choose-us {

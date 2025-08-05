@@ -4,7 +4,7 @@ function Contact() {
   return (
     <div className="contact-container">
       <div className="contact-header">
-        <h1 className="contact-title">Contact AdTalk Events</h1>
+        <h1 className="contact-title">Connect with Us</h1>
         <p className="contact-subtitle">
           Ready to elevate your next event? Our experienced team is here to help you create extraordinary experiences that drive results.
         </p>

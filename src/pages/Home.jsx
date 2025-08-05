@@ -3,7 +3,7 @@ import './Home.css'
 
 function Home() {
   const clients = [
-    { name: 'Universal Robina', logo: ''},
+    { name: 'Universal Robina Corporation', logo: ''},
     { name: 'Kewpie', logo: ''},
     { name: 'Ford', logo: ''},
     { name: 'Casio', logo: ''},
@@ -13,29 +13,42 @@ function Home() {
 
   const services = [
     {
-      id: 'brand-activations',
-      title: 'Brand Activations',
+      id: 'on-ground-brand-activity-deployment',
+      title: 'On-Ground Brand Activity Deployment',
       description: 'Bridge the gap between your market and your brand through an unforgettable experience. We\'ll transform how your customers see your company and products by bringing your vision to life.',
       icon: '🎯'
     },
     {
-      id: 'manpower-deployment',
-      title: 'Manpower Deployment',
+      id: 'nationwide-manpower-deployment',
+      title: 'Nationwide Manpower Deployment',
       description: 'Skilled personnel deployment including flyering agents, sales associates, merchandisers, samplers, push girls, and brand ambassadors.',
       icon: '👥'
     },
     {
-      id: 'conventions-trade-shows',
-      title: 'Conventions & Trade Shows',
+      id: 'conventions-eventsconceptualization-management-execution',
+      title: 'Conventions, Events Conceptualization, Management & Execution',
       description: 'Full-service convention management including booth setup, staff coordination, and visitor engagement activities.',
       icon: '🏢'
     },
     {
-      id: 'merchandise-installation',
-      title: 'Merchandise Installation & Management for General Trade and Key Accounts',
+      id: 'posminstallation-managementforgeneraltrade-and-key-accounts',
+      title: 'POSM Installation (Point-of-Sales-Material) & Management for General Trade and Key Accounts',
       description: 'Professional merchandising installation services for general trade outlets and key account establishments.',
       icon: '🛒'
+    },
+    {
+      id:'nationwide-sampling-andor-selling-activity',
+      title: 'Nationwide Sampling and or Selling Activity',
+      description: 'Executing and overseeing the activity with seasoned team lead and account executives from our team.',
+      icon: '🛍️'
+    } ,
+    {
+      id: 'nationwide-training-capabilities',
+      title: 'Nationwide Training Capabilities',
+      description: 'We can train your team nationwide, ensuring consistent brand messaging and product knowledge across all locations.',
+      icon: '📚'
     }
+
   ];
 
   return (
@@ -64,7 +77,7 @@ function Home() {
             <div className="stat">
               <span className="stat-icon">⭐</span>
               <span className="stat-number">8</span>
-              <span className="stat-label">Years Experience</span>
+              <span className="stat-label">Years of Experience</span>
             </div>
           </div>
         </div>
@@ -73,7 +86,7 @@ function Home() {
       {/* About Section */}
       <section className="about-section">
         <div className="about-content">
-          <h2 className="section-title">About Adtalk Events</h2>
+          <h2 className="section-title">About Us</h2>
           <p className="about-description">
             We are a dynamic group of people working together to source, train, and manage the right manpower required for any brand/product activation in General Trade and Key Account. 
             We also do events, sales conventions, and launching of new products, and or services nationwide.
@@ -82,18 +95,18 @@ function Home() {
             <h3>Our Mission & Vision</h3>
             <div className="values-grid">
               <div className="value-item">
-                <h4>Mission</h4>
-            <b> <p>DEDICATED TO PROVIDING FRESH RESULTS THROUGH ONLY THE BEST CUSTOMER SERVICE</p></b>
+                <b><h4>Mission</h4></b>
+                <p>DEDICATED TO PROVIDING FRESH RESULTS THROUGH ONLY THE BEST CUSTOMER SERVICE</p>
               </div>
               <div className="value-item">
-                <h4>Vision</h4>
-               <p><b>PROVIDING INNOVATIVE SOLUTIONS FOR OUR CLIENTS
+                <b><h4>Vision</h4></b>
+               <p>PROVIDING INNOVATIVE SOLUTIONS FOR OUR CLIENTS
                   <br />
-                  TO SHARE THEIR VISION WITH THEIR CUSTOMERS</b></p>
+                  TO SHARE THEIR VISION WITH THEIR CUSTOMERS</p>
                   <br />
-                <p> <b>USHERING IN PARTNERSHIPS WITH CLIENTS
+                <p> USHERING IN PARTNERSHIPS WITH CLIENTS
                   <br />
-                  WHERE GOALS ARE MET EVERY STEP OF THE WAY.</b>
+                  WHERE GOALS ARE MET EVERY STEP OF THE WAY.
                 </p>
               </div>
             </div>
@@ -103,13 +116,13 @@ function Home() {
 
       {/* Services Section */}
       <section className="services-section">
-        <h2 className="section-title">Our Specialized Services</h2>
+        <h2 className="section-title">OUR SPECIALIZED SERVICES</h2>
         <p className="services-intro">We provide comprehensive brand activation and promotional solutions with nationwide reach:</p>
         <div className="services-grid">
           {services.map((service, index) => (
             <Link 
               key={index} 
-              to={`/services#${service.id}`}
+              to={`/services/${service.id}`}
               className="service-card-link"
             >
               <div className="service-card">
@@ -126,7 +139,7 @@ function Home() {
 
       {/* Manpower Deployment Section */}
       <section className="manpower-section">
-        <h2 className="section-title">Professional Manpower Deployment</h2>
+        <h2 className="section-title">PROFESSIONAL MANPOWER DEPLOYMENT</h2>
         <p className="manpower-intro">Our skilled personnel are trained to represent your brand with excellence:</p>
         <div className="manpower-grid">
 
@@ -183,10 +196,9 @@ function Home() {
       {/* Why Choose Us Section */}
       <section className="why-choose-section">
         <div className="why-choose-content">
-          <h2 className="section-title">Why Choose AdTalk Events?</h2>
+          <h2 className="section-title">Why Choose AdTalk?</h2>
           <p className="why-choose-intro">
-            With over 8 years of experience in the industry, we've built a reputation for excellence that sets us apart from the competition. 
-            Here's what makes us the preferred partner for leading brands across the Philippines:
+            With over 8 years of experience in the industry, we've built a reputation for excellence that sets us apart from the competition. Here's what makes us the preferred partner for leading brands across the Philippines:
           </p>
           <div className="why-choose-grid">
             <div className="why-choose-item">
@@ -197,12 +209,12 @@ function Home() {
             <div className="why-choose-item">
               <div className="why-choose-icon">👥</div>
               <h3>Comprehensive Manpower Solutions</h3>
-              <p>We maintain a database of over 5,000 trained professionals including brand ambassadors, sales associates, merchandisers, and promotional staff. Our rigorous recruitment process ensures we only work with Class AA to Class C certified personnel. Each team member undergoes comprehensive product training, customer service workshops, and brand alignment sessions before deployment.</p>
+              <p>We maintain a roster of trained professionals including brand ambassadors, sales associates, merchandisers, and promotional staff. Our rigorous recruitment process ensures we only work with Class A to Class C certified personnel. Each team member undergoes comprehensive product training, customer service workshops, and brand alignment sessions before deployment.</p>
             </div>
             <div className="why-choose-item">
               <div className="why-choose-icon">🏆</div>
               <h3>Proven Track Record with Industry Leaders</h3>
-              <p>Our portfolio includes successful partnerships with Fortune 500 companies like Universal Robina, Ford, and Casio. We've executed over 1,000 projects with a 98% client satisfaction rate. Our case studies demonstrate consistent ROI improvements, increased brand awareness, and measurable sales growth for our clients across various industries.</p>
+              <p>Our portfolio includes successful partnerships with Fortune 500 companies like Universal Robina Corporation, Ford, and Casio. We've executed over 1,000 projects with a 98% client satisfaction rate. Our case studies demonstrate consistent ROI improvements, increased brand awareness, and measurable sales growth for our clients across various industries.</p>
             </div>
             <div className="why-choose-item">
               <div className="why-choose-icon">🛒</div>
