@@ -23,8 +23,8 @@ function Footer() {
             <ul className="footer-links">
               <li><Link to="/">Home</Link></li>
               <li><Link to="/services">Services</Link></li>
-              <li><Link to="/gallery">Adtalk Gallery</Link></li>
               <li><Link to="/contact">Contact</Link></li>
+              <li><Link to="/gallery">Adtalk Gallery</Link></li>
             </ul>
           </div>
 
