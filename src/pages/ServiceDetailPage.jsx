@@ -66,7 +66,25 @@ function ServiceDetailPage() {
       description: 'Professional merchandising installation services for general trade outlets and key account establishments.',
       image1: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&h=300&fit=crop',
       image2: 'https://images.unsplash.com/photo-1557838923-2985c318be48?w=500&h=300&fit=crop',
-      image3: 'https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=500&h=300&fit=crop'
+      image3: 'https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=500&h=300&fit=crop',
+      subcategories: [
+        {
+          title: 'Interactive Installations',
+          description: 'Engaging and interactive installations that enhance customer experience and brand visibility.'
+        },
+        {
+          title: 'Pop-Up Shops',
+          description: 'Temporary retail spaces designed to create unique shopping experiences and promote brand engagement.'
+        },
+        {
+          title: 'Community Partnerships',
+          description: 'Collaborative efforts with local businesses and organizations to enhance brand presence and community engagement.'
+        },
+        {
+          title: 'Gamified Engagement Campagains',
+          description: 'Innovative campaigns that use gamification to engage customers and promote brand loyalty.',
+        }
+      ]
     }
   ]
 
