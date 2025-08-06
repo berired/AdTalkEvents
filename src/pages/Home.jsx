@@ -86,27 +86,25 @@ function Home() {
       {/* About Section */}
       <section className="about-section">
         <div className="about-content">
-          <h2 className="section-title">About Us</h2>
+          <h2 className="section-title">You Talk. We Listen.</h2>
           <p className="about-description">
-            We are a dynamic group of people working together to source, train, and manage the right manpower required for any brand/product activation in General Trade and Key Account. 
-            We also do events, sales conventions, and launching of new products, and or services nationwide.
+            We are a dynamic group of people working together to help you source, train, manage the right manpower required to connect you to customers and reach your potential growth in the industry. Establishing benchmark that meet your expectations and beyond.
           </p>
           <div className="company-values">
-            <h3>Our Mission & Vision</h3>
             <div className="values-grid">
               <div className="value-item">
-                <b><h4>Mission</h4></b>
-                <p>DEDICATED TO PROVIDING FRESH RESULTS THROUGH ONLY THE BEST CUSTOMER SERVICE</p>
+                <b><h4>MISSION</h4></b>
+                <p>Dedicated to providing fresh results through only the best customer service.</p>
               </div>
               <div className="value-item">
-                <b><h4>Vision</h4></b>
-               <p>PROVIDING INNOVATIVE SOLUTIONS FOR OUR CLIENTS
+                <b><h4>VISION</h4></b>
+               <p>Providing innovative solutions for our clients
                   <br />
-                  TO SHARE THEIR VISION WITH THEIR CUSTOMERS</p>
+                  to share their vision with their customers</p>
                   <br />
-                <p> USHERING IN PARTNERSHIPS WITH CLIENTS
+                <p> Ushering in partnerships with clients
                   <br />
-                  WHERE GOALS ARE MET EVERY STEP OF THE WAY.
+                  where goals are met every step of the way.
                 </p>
               </div>
             </div>
@@ -117,7 +115,7 @@ function Home() {
       {/* Services Section */}
       <section className="services-section">
         <h2 className="section-title">OUR SPECIALIZED SERVICES</h2>
-        <p className="services-intro">We provide comprehensive brand activation and promotional solutions with nationwide reach:</p>
+        <p className="services-intro">We provide comprehensive brand activation and promotional solutions with nationwide reach</p>
         <div className="services-grid">
           {services.map((service, index) => (
             <Link 
