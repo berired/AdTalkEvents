@@ -39,7 +39,7 @@ function ServiceDetailPage() {
     {
       id: 'nationwide-training-capabilities',
       title: 'Nationwide Training Capabilities',
-      description: 'We can train your team nationwide, ensuring consistent brand messaging and product knowledge across all locations.',
+      description: 'With our nationwide reach and satellite offices, nationwide training can enhance job satisfaction, booth sales and productivity, and lastly improve employee retention.',
       image1: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=500&h=300&fit=crop',
       image2: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=500&h=300&fit=crop',
       image3: 'https://images.unsplash.com/photo-1515187029135-18ee286d815b?w=500&h=300&fit=crop'
@@ -55,7 +55,7 @@ function ServiceDetailPage() {
     {
       id: 'events-conceptualization-management-execution',
       title: 'Events Conceptualization, Management & Execution',
-      description: 'Full-service event management including booth setup, staff coordination, and visitor engagement activities.',
+      description: 'Encompasses the entire process of planning, organizing, and executing events from initial concept and requirements to post-event evaluation.',
       image1: 'https://images.unsplash.com/photo-1515187029135-18ee286d815b?w=500&h=300&fit=crop',
       image2: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=500&h=300&fit=crop',
       image3: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=500&h=300&fit=crop'

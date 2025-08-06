@@ -51,7 +51,7 @@ function Home() {
       <section className="hero-section">
         <div className="hero-content">
           <h1 className="hero-title">
-            You Talk <span className="gradient-text">We Listen</span>
+            You Talk. <span className="gradient-text">We Listen.</span>
           </h1>
           <p className="hero-subtitle">
            Building mutually beneficial relationships with clients and team members <strong>through the perfected art of listening.</strong>
