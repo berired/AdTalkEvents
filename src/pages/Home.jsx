@@ -13,42 +13,36 @@ function Home() {
 
   const services = [
     {
-      id: 'on-ground-brand-activity-deployment',
-      title: 'On-Ground Brand Activity Deployment',
-      description: 'Bridge the gap between your market and your brand through an unforgettable experience. We\'ll transform how your customers see your company and products by bringing your vision to life.',
-      icon: '🎯'
-    },
-    {
       id: 'nationwide-manpower-deployment',
       title: 'Nationwide Manpower Deployment',
       description: 'Skilled personnel deployment including flyering agents, sales associates, merchandisers, samplers, push girls, and brand ambassadors.',
       icon: '👥'
     },
-    {
-      id: 'conventions-eventsconceptualization-management-execution',
-      title: 'Conventions, Events Conceptualization, Management & Execution',
-      description: 'Full-service convention management including booth setup, staff coordination, and visitor engagement activities.',
-      icon: '🏢'
-    },
-    {
-      id: 'posminstallation-managementforgeneraltrade-and-key-accounts',
-      title: 'POSM Installation (Point-of-Sales-Material) & Management for General Trade and Key Accounts',
-      description: 'Professional merchandising installation services for general trade outlets and key account establishments.',
-      icon: '🛒'
-    },
-    {
-      id:'nationwide-sampling-andor-selling-activity',
-      title: 'Nationwide Sampling and or Selling Activity',
-      description: 'Executing and overseeing the activity with seasoned team lead and account executives from our team.',
-      icon: '🛍️'
-    } ,
-    {
+     {
       id: 'nationwide-training-capabilities',
       title: 'Nationwide Training Capabilities',
       description: 'We can train your team nationwide, ensuring consistent brand messaging and product knowledge across all locations.',
       icon: '📚'
-    }
-
+    },
+    {
+      id:'nationwide-sampling-selling-and-merchandising',
+      title: 'Nationwide Sampling, Selling & Merchandising',
+      description: 'Executing and overseeing the activity with seasoned team lead and account executives from our team.',
+      icon: '🛍️'
+    },
+    {
+      id: 'events-conceptualization-management-execution',
+      title: 'Events Conceptualization, Management & Execution',
+      description: 'Full-service event management including booth setup, staff coordination, and visitor engagement activities.',
+      icon: '🏢'
+    },
+    {
+      id: 'onground-brandactivity-deployment-posminstallation-and-management-for-generaltrade-and-keyaccounts',
+      title: 'On-Ground Brand Activity Deployment including POSM Installation & Management for General Trade and Key Accounts',
+      description: 'Professional merchandising installation services for general trade outlets and key account establishments.',
+      icon: '🛒'
+    },
+    
   ];
 
   return (
@@ -158,23 +152,18 @@ function Home() {
           <div className="manpower-card">
             <div className="manpower-icon">⚙️</div>
             <h3>Managing</h3>
-            <ul>
-              <li>Seamless deployments, this our main goal.</li>
-              <li>Our team of dedicated managers and account executives make sure that each operation we have has zero error.</li>
-            </ul>
+              <p>Seamless deployments, this our main goal.</p>
+              <br />
+              <p>Our team of dedicated managers and account executives make sure that each operation we have has zero error.</p>
           </div>
           <div className="manpower-card">
             <div className="manpower-icon">📊</div>
             <h3>Monitoring</h3>
-            <ul>
-              <li>Each account executive monitor daily operations and provide effective
-                and efficient solutions to any situation and challenges that arise in the project.
-              </li>
-              <li>
-                Weekly submission of accurate sales report.
-              </li>
-            </ul>
-          </div>
+              <p>Each account executive monitor daily operations and provide effective
+                and efficient solutions to any situation and challenges that arise in the project.</p>
+              <br />
+              <p>Weekly submission of accurate sales report.</p>
+            </div>
         </div>
       </section>
 

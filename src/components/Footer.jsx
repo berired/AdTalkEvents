@@ -29,12 +29,11 @@ function Footer() {
           <div className="footer-section">
             <h4>Our Services</h4>
             <ul className="footer-links">
-              <li>On-Ground Brand Activity Deployment</li>
               <li>Nationwide Manpower Deployment</li>
-              <li>Conventions, Events Conceptualization, Management & Execution</li>
-              <li>POSM Installation & Management</li>
-              <li>Nationwide Sampling & Selling Activity</li>
               <li>Nationwide Training Capabilities</li>
+              <li>Nationwide Sampling, Selling & Merchandising</li>
+              <li>Events Conceptualization, Management & Execution</li>
+              <li>On-Ground Brand Activity Deployment including POSM Installation & Management for General Trade and Key Accounts</li>
             </ul>
           </div>
 

@@ -159,16 +159,8 @@
 .sub-items li {
   color: var(--color-secondary);
   padding: 0.3rem 0;
-  padding-left: 1rem;
+  padding-left: 0;
   position: relative;
-}
-
-.sub-items li:before {
-  content: "•";
-  color: var(--color-primary);
-  font-weight: bold;
-  position: absolute;
-  left: 0;
 }
 
 .service-not-found {
