@@ -4,6 +4,7 @@ import Footer from './components/Footer'
 import Home from './pages/Home'
 import Services from './pages/Services'
 import ServiceDetailPage from './pages/ServiceDetailPage'
+import SubcategoryDetailPage from './pages/SubcategoryDetailPage'
 import Contact from './pages/Contact'
 import Gallery from './pages/Gallery'
 import './App.css'
@@ -18,6 +19,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/services" element={<Services />} />
             <Route path="/services/:id" element={<ServiceDetailPage />} />
+            <Route path="/services/:serviceId/subcategory/:subcategoryId" element={<SubcategoryDetailPage />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/gallery" element={<Gallery />} />
           </Routes>

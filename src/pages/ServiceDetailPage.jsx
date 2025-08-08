@@ -18,19 +18,18 @@ function ServiceDetailPage() {
       image3: 'https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=500&h=300&fit=crop',
       subcategories: [
         {
+          id: 'sales-associates-merchandisers',
           title: 'Sales Associates & Merchandisers',
           description: 'Skilled retail professionals ensuring optimal product placement and customer engagement in retail environments.'
         },
         {
+          id: 'brand-ambassadors',
           title: 'Brand Ambassadors',
           description: 'Professional brand representatives trained to embody your brand values and engage with customers effectively.',
           subItems: ['Class A - Premium brand representatives', 'Class B - Standard brand ambassadors', 'Class C - Entry-level brand promoters']
         },
         {
-          title: 'Flyering Agents',
-          description: 'Professional distribution specialists for promotional materials and brand awareness campaigns.'
-        },
-        {
+          id: 'promoter-sampler-push-girl-helper',
           title: 'Promoter | Sampler | Push Girl | Helper',
           description: 'Experienced sampling specialists and promotional staff driving product trial and consumer interaction.'
         }
@@ -69,19 +68,23 @@ function ServiceDetailPage() {
       image3: 'https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=500&h=300&fit=crop',
       subcategories: [
         {
+          id: 'interactive-installations',
           title: 'Interactive Installations',
           description: 'Engaging and interactive installations that enhance customer experience and brand visibility.'
         },
         {
+          id: 'pop-up-shops',
           title: 'Pop-Up Shops',
           description: 'Temporary retail spaces designed to create unique shopping experiences and promote brand engagement.'
         },
         {
+          id: 'community-partnerships',
           title: 'Community Partnerships',
           description: 'Collaborative efforts with local businesses and organizations to enhance brand presence and community engagement.'
         },
         {
-          title: 'Gamified Engagement Campagains',
+          id: 'gamified-engagement-campaigns',
+          title: 'Gamified Engagement Campaigns',
           description: 'Innovative campaigns that use gamification to engage customers and promote brand loyalty.',
         }
       ]

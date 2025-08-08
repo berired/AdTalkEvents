@@ -1,7 +1,9 @@
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import './ServiceDetail.css'
 
 function ServiceDetail({ service, onBack }) {
+  const { id } = useParams()
+  
   const handleBackClick = (e) => {
     e.preventDefault()
     if (onBack) {
@@ -10,6 +12,16 @@ function ServiceDetail({ service, onBack }) {
       // Fallback to navigate to services page
       window.location.href = '/services'
     }
+  }
+
+  // Function to generate subcategory ID from title
+  const generateSubcategoryId = (title) => {
+    return title
+      .toLowerCase()
+      .replace(/[^a-z0-9\s]/g, '') // Remove special characters
+      .replace(/\s+/g, '-') // Replace spaces with hyphens
+      .replace(/--+/g, '-') // Replace multiple hyphens with single hyphen
+      .trim()
   }
 
   if (!service) {
@@ -52,19 +64,29 @@ function ServiceDetail({ service, onBack }) {
           <div className="subcategories-section">
             <h3>Our Offerings</h3>
             <div className="subcategories-grid">
-              {service.subcategories.map((sub, index) => (
-                <div key={index} className="subcategory-card">
-                  <h4>{sub.title}</h4>
-                  <p>{sub.description}</p>
-                  {sub.subItems && (
-                    <ul className="sub-items">
-                      {sub.subItems.map((item, idx) => (
-                        <li key={idx}>{item}</li>
-                      ))}
-                    </ul>
-                  )}
-                </div>
-              ))}
+              {service.subcategories.map((sub, index) => {
+                const subcategoryId = generateSubcategoryId(sub.title)
+                return (
+                  <Link 
+                    key={index} 
+                    to={`/services/${id}/subcategory/${subcategoryId}`}
+                    className="subcategory-card-link"
+                  >
+                    <div className="subcategory-card">
+                      <h4>{sub.title}</h4>
+                      <p>{sub.description}</p>
+                      {sub.subItems && (
+                        <ul className="sub-items">
+                          {sub.subItems.map((item, idx) => (
+                            <li key={idx}>{item}</li>
+                          ))}
+                        </ul>
+                      )}
+                      <div className="learn-more-text">Learn More →</div>
+                    </div>
+                  </Link>
+                )
+              })}
             </div>
           </div>
         )}

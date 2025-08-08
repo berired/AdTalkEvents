@@ -1,0 +1,117 @@
+.subcategory-detail-page {
+  width: 100%;
+  margin: 0 auto;
+  padding: 2rem 0 4rem 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  min-height: 100vh;
+}
+
+.subcategory-detail-container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 2rem 0 4rem 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  min-height: 100vh;
+}
+
+.subcategory-detail-header {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto 3rem auto;
+  text-align: center;
+  padding: 0 2rem;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: sectionFadeIn 0.7s 0.1s forwards;
+}
+
+.subcategory-detail-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin: 0 0 1rem 0;
+}
+
+.subcategory-images-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 2rem;
+  opacity: 0;
+  transform: translateY(40px);
+  animation: sectionFadeIn 0.8s 0.2s forwards;
+}
+
+.subcategory-image-item {
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(200,35,51,0.1);
+  transition: transform 0.3s ease;
+}
+
+.subcategory-image-item:hover {
+  transform: scale(1.02);
+}
+
+.subcategory-image-item img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.subcategory-image-item:hover img {
+  transform: scale(1.05);
+}
+
+.subcategory-detail-content {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  opacity: 0;
+  transform: translateY(40px);
+  animation: sectionFadeIn 0.8s 0.4s forwards;
+}
+
+.subcategory-detail-content h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-bottom: 1.5rem;
+}
+
+.subcategory-detail-description {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--color-secondary);
+  margin-bottom: 3rem;
+}
+
+@keyframes sectionFadeIn {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .subcategory-detail-title {
+    font-size: 2rem;
+  }
+  
+  .subcategory-images-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .subcategory-image-item img {
+    height: 250px;
+  }
+}

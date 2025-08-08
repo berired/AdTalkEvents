@@ -125,12 +125,19 @@
   gap: 2rem;
 }
 
+.subcategory-card-link {
+  text-decoration: none;
+  color: inherit;
+}
+
 .subcategory-card {
   background: var(--color-card);
   padding: 2rem;
   border-radius: 15px;
   box-shadow: 0 5px 15px rgba(200,35,51,0.07);
   transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+  position: relative;
 }
 
 .subcategory-card:hover {
@@ -149,6 +156,19 @@
   color: var(--color-secondary);
   line-height: 1.6;
   margin-bottom: 1rem;
+}
+
+.learn-more-text {
+  color: var(--color-primary);
+  font-weight: 600;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  opacity: 0.8;
+  transition: opacity 0.3s;
+}
+
+.subcategory-card:hover .learn-more-text {
+  opacity: 1;
 }
 
 .sub-items {
