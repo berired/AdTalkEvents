@@ -49,16 +49,12 @@ function Services() {
       image3: 'https://images.unsplash.com/photo-1557838923-2985c318be48?w=500&h=300&fit=crop'
     },
     {
-      id: 'events-conceptualization-management-execution',
-      title: 'Events Conceptualization, Management & Execution',
-      description: 'Full-service event management including booth setup, staff coordination, and visitor engagement activities.',
-      image1: 'https://images.unsplash.com/photo-1515187029135-18ee286d815b?w=500&h=300&fit=crop',
-      image2: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=500&h=300&fit=crop',
-      image3: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=500&h=300&fit=crop'
-    },
-    {
       id: 'onground-brandactivity-deployment-posminstallation-and-management-for-generaltrade-and-keyaccounts',
-      title: 'On-Ground Brand Activity Deployment including POSM Installation & Management for General Trade and Key Accounts',
+      title: (
+        <>
+          On-Ground Brand Activity Deployment<br />POSM Installation & Management for General Trade and Key Accounts
+        </>
+      ),
       description: 'Professional merchandising installation services for general trade outlets and key account establishments.',
       image1: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&h=300&fit=crop',
       image2: 'https://images.unsplash.com/photo-1557838923-2985c318be48?w=500&h=300&fit=crop',

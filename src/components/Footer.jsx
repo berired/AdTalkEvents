@@ -9,8 +9,8 @@ function Footer() {
           {/* Company Info */}
           <div className="footer-section">
             <div className="footer-logo">
-              <h3>Adtalk Event Solutions Inc.</h3>
-              <p className="footer-tagline">You Talk, We Listen</p>
+              <h3>AdTalk Event Solutions Inc.</h3>
+              <p className="footer-tagline">you talk, we listen</p>
             </div>
           </div>
 
@@ -32,8 +32,7 @@ function Footer() {
               <li>Nationwide Manpower Deployment</li>
               <li>Nationwide Training Capabilities</li>
               <li>Nationwide Sampling, Selling & Merchandising</li>
-              <li>Events Conceptualization, Management & Execution</li>
-              <li>On-Ground Brand Activity Deployment including POSM Installation & Management for General Trade and Key Accounts</li>
+              <li>On-Ground Brand Activity Deployment <br />POSM Installation & Management for General Trade and Key Accounts</li>
             </ul>
           </div>
 
@@ -69,7 +68,7 @@ function Footer() {
         {/* Footer Bottom */}
         <div className="footer-bottom">
           <div className="footer-bottom-content">
-            <p>&copy; {new Date().getFullYear()} Adtalk Event Solutions Inc. All rights reserved.</p>
+            <p>&copy; {new Date().getFullYear()} AdTalk Event Solutions Inc. All rights reserved.</p>
             <p>Professional brand activation and promotional marketing solutions nationwide.</p>
           </div>
         </div>

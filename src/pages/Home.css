@@ -550,7 +550,7 @@
   margin-bottom: 0.5rem;
 }
 
-.value-item h4 {
+.value-item h3 {
   color: black;
   font-size: 1.1rem;
   font-weight: 600;
@@ -558,13 +558,13 @@
   transition: color 0.3s;
 }
 
-.value-item:hover h4 {
+.value-item:hover h3 {
   color: white;
 }
 
 .value-item p {
   color: #000000;
-  font-size: 0.9rem;
+  font-size: 1.1rem;
   margin: 0;
   transition: color 0.3s;
 }

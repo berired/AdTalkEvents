@@ -12,14 +12,19 @@ function ServiceDetailPage() {
     {
       id: 'nationwide-manpower-deployment',
       title: 'Nationwide Manpower Deployment',
-      description: 'Depending on the clients requirements our team makes a strategic process of allocating and utilizing a workforce to effectively meet organizational goals and project requirements.',
+      description: 'Depending on the clients requirements our team makes a strategic process of allocating and utilizing a workforce to effectively meet organizational goals and project requirements. Skilled personnel such as promoter, sampler, push girl, sales associate, merchandiser, brand ambassadors.',
       image1: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=500&h=300&fit=crop',
       image2: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=500&h=300&fit=crop',
       image3: 'https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=500&h=300&fit=crop',
       subcategories: [
         {
+          id: 'promoter-sampler-push-girl-helper',
+          title: 'Promoter | Sampler | Push Girl | Helper',
+          description: 'Experienced sampling specialists and promotional staff driving product trial and consumer interaction.'
+        },
+        {
           id: 'sales-associates-merchandisers',
-          title: 'Sales Associates & Merchandisers',
+          title: 'Sales Associate | Merchandisers',
           description: 'Skilled retail professionals ensuring optimal product placement and customer engagement in retail environments.'
         },
         {
@@ -28,11 +33,6 @@ function ServiceDetailPage() {
           description: 'Professional brand representatives trained to embody your brand values and engage with customers effectively.',
           subItems: ['Class A - Premium brand representatives', 'Class B - Standard brand ambassadors', 'Class C - Entry-level brand promoters']
         },
-        {
-          id: 'promoter-sampler-push-girl-helper',
-          title: 'Promoter | Sampler | Push Girl | Helper',
-          description: 'Experienced sampling specialists and promotional staff driving product trial and consumer interaction.'
-        }
       ]
     },
     {
@@ -52,16 +52,12 @@ function ServiceDetailPage() {
       image3: 'https://images.unsplash.com/photo-1557838923-2985c318be48?w=500&h=300&fit=crop'
     },
     {
-      id: 'events-conceptualization-management-execution',
-      title: 'Events Conceptualization, Management & Execution',
-      description: 'Encompasses the entire process of planning, organizing, and executing events from initial concept and requirements to post-event evaluation.',
-      image1: 'https://images.unsplash.com/photo-1515187029135-18ee286d815b?w=500&h=300&fit=crop',
-      image2: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=500&h=300&fit=crop',
-      image3: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=500&h=300&fit=crop'
-    },
-    {
       id: 'onground-brandactivity-deployment-posminstallation-and-management-for-generaltrade-and-keyaccounts',
-      title: 'On-Ground Brand Activity Deployment including POSM Installation & Management for General Trade and Key Accounts',
+      title: (
+        <>
+          On-Ground Brand Activity Deployment<br />POSM Installation & Management for General Trade and Key Accounts
+        </>
+      ),
       description: 'Professional merchandising installation services for general trade outlets and key account establishments.',
       image1: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&h=300&fit=crop',
       image2: 'https://images.unsplash.com/photo-1557838923-2985c318be48?w=500&h=300&fit=crop',
@@ -92,7 +88,6 @@ function ServiceDetailPage() {
   ]
 
   useEffect(() => {
-    // Simulate API call
     const timer = setTimeout(() => {
       const foundService = servicesData.find(s => s.id === id)
       setService(foundService)

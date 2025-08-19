@@ -14,32 +14,32 @@ function Home() {
   const services = [
     {
       id: 'nationwide-manpower-deployment',
-      title: 'Nationwide Manpower Deployment',
-      description: 'Skilled personnel deployment including flyering agents, sales associates, merchandisers, samplers, push girls, and brand ambassadors.',
-      icon: '👥'
+      title: 'NATIONWIDE MANPOWER DEPLOYMENT',
+    icon: (
+      <div style={{ fontSize: '1.2rem', lineHeight: '1', textAlign: 'center' }}>
+        <div>👤</div>
+        <div style={{ marginTop: '-2px' }}>👥👥</div>
+        <div style={{ marginTop: '-2px' }}>👥👥👥</div>
+      </div>
+    )
     },
      {
       id: 'nationwide-training-capabilities',
-      title: 'Nationwide Training Capabilities',
-      description: 'We can train your team nationwide, ensuring consistent brand messaging and product knowledge across all locations.',
+      title: 'NATIONWIDE TRAINING CAPABILITIES',
       icon: '📚'
     },
     {
       id:'nationwide-sampling-selling-and-merchandising',
-      title: 'Nationwide Sampling, Selling & Merchandising',
-      description: 'Executing and overseeing the activity with seasoned team lead and account executives from our team.',
+      title: 'NATIONWIDE SAMPLING, SELLING & MERCHANDISING',
       icon: '🛍️'
     },
     {
-      id: 'events-conceptualization-management-execution',
-      title: 'Events Conceptualization, Management & Execution',
-      description: 'Full-service event management including booth setup, staff coordination, and visitor engagement activities.',
-      icon: '🏢'
-    },
-    {
       id: 'onground-brandactivity-deployment-posminstallation-and-management-for-generaltrade-and-keyaccounts',
-      title: 'On-Ground Brand Activity Deployment including POSM Installation & Management for General Trade and Key Accounts',
-      description: 'Professional merchandising installation services for general trade outlets and key account establishments.',
+      title: (
+        <>
+          ON-GROUND BRAND ACTIVITY DEPLOYMENT<br />POSM INSTALLATION AND MANAGEMENT FOR GENERAL TRADE AND KEY ACCOUNTS
+        </>
+      ),
       icon: '🛒'
     },
     
@@ -51,10 +51,10 @@ function Home() {
       <section className="hero-section">
         <div className="hero-content">
           <h1 className="hero-title">
-            You Talk. <span className="gradient-text">We Listen.</span>
+            you Talk. <span className="gradient-text">we listen.</span>
           </h1>
           <p className="hero-subtitle">
-           Building mutually beneficial relationships with clients and team members <strong>through the perfected art of listening.</strong>
+           Building mutually beneficial relationships with clients and team members <strong><br />through the perfected art of listening.</strong>
           </p>
           <Link to="/contact" className="hero-cta-btn">Plan Your Event</Link>
           <div className="hero-stats">
@@ -80,26 +80,20 @@ function Home() {
       {/* About Section */}
       <section className="about-section">
         <div className="about-content">
-          <h2 className="section-title">You Talk. We Listen.</h2>
+          <h2 className="section-title">you talk. we Listen.</h2>
           <p className="about-description">
             We are a dynamic group of people working together to help you source, train, manage the right manpower required to connect you to customers and reach your potential growth in the industry. Establishing benchmark that meet your expectations and beyond.
           </p>
           <div className="company-values">
             <div className="values-grid">
               <div className="value-item">
-                <b><h4>MISSION</h4></b>
-                <p>Dedicated to providing fresh results through only the best customer service.</p>
+                <b><h3>MISSION</h3></b>
+                <p style={{ fontSize: '1.35rem' }}>Dedicated to providing fresh results through only the best customer service.</p>
               </div>
               <div className="value-item">
-                <b><h4>VISION</h4></b>
-               <p>Providing innovative solutions for our clients
-                  <br />
-                  to share their vision with their customers</p>
-                  <br />
-                <p> Ushering in partnerships with clients
-                  <br />
-                  where goals are met every step of the way.
-                </p>
+                <b><h3>VISION</h3></b>
+               <p>Providing innovative solutions for our clients to share their vision with their customers, ushering in partnerships with clients where goals are met every step of the way</p>
+
               </div>
             </div>
           </div>
@@ -152,17 +146,12 @@ function Home() {
           <div className="manpower-card">
             <div className="manpower-icon">⚙️</div>
             <h3>Managing</h3>
-              <p>Seamless deployments, this our main goal.</p>
-              <br />
-              <p>Our team of dedicated managers and account executives make sure that each operation we have has zero error.</p>
+              <p>Seamless deployments, this our main goal. <br />Our team of dedicated managers and account executives make sure that each operation we have has zero error.</p>
           </div>
           <div className="manpower-card">
             <div className="manpower-icon">📊</div>
             <h3>Monitoring</h3>
-              <p>Each account executive monitor daily operations and provide effective
-                and efficient solutions to any situation and challenges that arise in the project.</p>
-              <br />
-              <p>Weekly submission of accurate sales report.</p>
+              <p>Each account executive monitor daily operations and provide effective and efficient solutions to any situation and challenges that arise in the project. Weekly submission of accurate sales report.</p>
             </div>
         </div>
       </section>
@@ -183,7 +172,7 @@ function Home() {
       {/* Why Choose Us Section */}
       <section className="why-choose-section">
         <div className="why-choose-content">
-          <h2 className="section-title">Why Choose AdTalk?</h2>
+          <h2 className="section-title">why choose AdTalk?</h2>
           <p className="why-choose-intro">
             With over 8 years of experience in the industry, we've built a reputation for excellence that sets us apart from the competition. Here's what makes us the preferred partner for leading brands across the Philippines:
           </p>
