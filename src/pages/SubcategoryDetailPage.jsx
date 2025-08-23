@@ -22,7 +22,7 @@ function SubcategoryDetailPage() {
       'brand-ambassadors': {
         id: 'brand-ambassadors',
         title: 'Brand Ambassadors',
-        description: 'Professional brand representatives trained to embody your brand values and engage with customers effectively. Our brand ambassadors are categorized into three classes based on their experience and capabilities: Class A - Premium brand representatives with extensive experience and exceptional communication skills, Class B - Standard brand ambassadors with solid training and proven track record, Class C - Entry-level brand promoters who are enthusiastic and well-trained for basic promotional activities.',
+        description: 'Professional brand representatives trained to embody your brand values and engage with customers effectively. Our brand ambassadors are categorized into two classes based on their experience and capabilities: Class A - Premium brand representatives with extensive experience and exceptional communication skills, Class B - Standard brand ambassadors with solid training and proven track record.',
         image1: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=500&h=300&fit=crop',
         image2: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=500&h=300&fit=crop',
         image3: 'https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?w=500&h=300&fit=crop'

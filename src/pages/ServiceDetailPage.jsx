@@ -31,7 +31,7 @@ function ServiceDetailPage() {
           id: 'brand-ambassadors',
           title: 'Brand Ambassadors',
           description: 'Professional brand representatives trained to embody your brand values and engage with customers effectively.',
-          subItems: ['Class A - Premium brand representatives', 'Class B - Standard brand ambassadors', 'Class C - Entry-level brand promoters']
+          subItems: ['Class A - Premium brand representatives', 'Class B - Standard brand ambassadors']
         },
       ]
     },
@@ -55,7 +55,7 @@ function ServiceDetailPage() {
       id: 'onground-brandactivity-deployment-posminstallation-and-management-for-generaltrade-and-keyaccounts',
       title: (
         <>
-          On-Ground Brand Activity Deployment<br />POSM Installation & Management for General Trade and Key Accounts
+          On-Ground Brand Activity Deployment<br />POSM Installation & Management for General Trade and Key Account
         </>
       ),
       description: 'Professional merchandising installation services for general trade outlets and key account establishments.',

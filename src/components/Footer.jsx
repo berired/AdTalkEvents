@@ -10,7 +10,7 @@ function Footer() {
           <div className="footer-section">
             <div className="footer-logo">
               <h3>AdTalk Event Solutions Inc.</h3>
-              <p className="footer-tagline">you talk, we listen</p>
+              <p className="footer-tagline">you Talk. we listen</p>
             </div>
           </div>
 

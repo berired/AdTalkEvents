@@ -52,7 +52,7 @@ function Services() {
       id: 'onground-brandactivity-deployment-posminstallation-and-management-for-generaltrade-and-keyaccounts',
       title: (
         <>
-          On-Ground Brand Activity Deployment<br />POSM Installation & Management for General Trade and Key Accounts
+          On-Ground Brand Activity Deployment<br />POSM Installation & Management for General Trade and Key Account
         </>
       ),
       description: 'Professional merchandising installation services for general trade outlets and key account establishments.',

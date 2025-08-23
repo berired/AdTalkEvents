@@ -37,7 +37,7 @@ function Home() {
       id: 'onground-brandactivity-deployment-posminstallation-and-management-for-generaltrade-and-keyaccounts',
       title: (
         <>
-          ON-GROUND BRAND ACTIVITY DEPLOYMENT<br />POSM INSTALLATION AND MANAGEMENT FOR GENERAL TRADE AND KEY ACCOUNTS
+          ON-GROUND BRAND ACTIVITY DEPLOYMENT<br />POSM INSTALLATION AND MANAGEMENT FOR GENERAL TRADE AND KEY ACCOUNT
         </>
       ),
       icon: '🛒'
