@@ -176,7 +176,7 @@
 /* Clients Section */
 .clients-section {
   padding: 5rem 2rem;
-  background: var(--color-card);
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 50%, #f1f3f5 100%);
   box-shadow: 0 2px 12px 0 rgba(200,35,51,0.04);
   opacity: 0;
   transform: translateY(40px);
@@ -185,38 +185,90 @@
 
 .clients-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2.5rem;
   width: 100%;
-  max-width: 1400px;
-  margin: 0 auto;
+  max-width: 1200px;
+  margin: 2rem auto 0 auto;
 }
 
 .client-card {
-  background: var(--color-bg-light);
-  padding: 2rem;
-  border-radius: 15px;
+  background: linear-gradient(145deg, #ffffff 0%, #f8f9fa 100%);
+  padding: 2.5rem 2rem;
+  border-radius: 20px;
   text-align: center;
-  transition: transform 0.3s, box-shadow 0.3s;
-  box-shadow: 0 2px 8px 0 rgba(200,35,51,0.04);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 8px 25px rgba(200,35,51,0.08);
+  border: 2px solid transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+.client-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  transition: left 0.5s;
+}
+
+.client-card:hover::before {
+  left: 100%;
 }
 
 .client-card:hover {
-  background: var(--color-bg-gradient);
-  color: white;
-  transform: scale(1.04);
-  box-shadow: 0 15px 30px rgba(200,35,51,0.13);
+  transform: translateY(-12px) scale(1.03);
+  box-shadow: 0 20px 40px rgba(200,35,51,0.25);
 }
 
 .client-logo {
-  font-size: 3rem;
-  margin-bottom: 1rem;
+  width: 120px;
+  height: 80px;
+  margin: 0 auto 1.5rem auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #e9ecef 0%, #d3d9df 100%);
+  border-radius: 15px;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  border: 2px solid rgba(200, 35, 51, 0.15);
+}
+
+.client-card:hover .client-logo {
+  transform: scale(1.1);
+  background: linear-gradient(135deg, #c8d6e5 0%, #b8c6db 50%, #a8b4c8 100%);
+  border-color: rgba(200, 35, 51, 0.4);
+  box-shadow: 0 6px 20px rgba(200, 35, 51, 0.18);
+}
+
+.client-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: grayscale(100%) opacity(0.8);
+  transition: all 0.3s ease;
+}
+
+.client-card:hover .client-logo img {
+  filter: grayscale(0%) opacity(1) brightness(1.1);
 }
 
 .client-name {
   font-size: 1.1rem;
   font-weight: 600;
   margin: 0;
+  line-height: 1.4;
+  transition: all 0.3s ease;
+  color: var(--color-text);
+}
+
+.client-card:hover .client-name {
+  color: var(--color-primary);
+  text-shadow: 0 2px 4px rgba(200,35,51,0.2);
 }
 
 /* About Section */
@@ -376,6 +428,26 @@
   .services-grid,
   .clients-grid {
     grid-template-columns: 1fr;
+  }
+  
+  .clients-grid {
+    gap: 2rem;
+    margin-top: 1.5rem;
+  }
+  
+  .client-card {
+    padding: 2rem 1.5rem;
+    border-radius: 16px;
+  }
+  
+  .client-logo {
+    width: 100px;
+    height: 70px;
+    margin-bottom: 1.2rem;
+  }
+  
+  .client-name {
+    font-size: 1rem;
   }
   
   .service-card,

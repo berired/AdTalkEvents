@@ -2,6 +2,11 @@ import { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import './SubcategoryDetailPage.css'
 
+// Import images
+import promoterImage1 from '../assets/nationwide manpower/promoter, sampler, push girl/promoter, sampler, push girl.jpg'
+import promoterImage2 from '../assets/nationwide manpower/promoter, sampler, push girl/promoter, sampler, push girl - 1.jpg'
+import promoterImage3 from '../assets/nationwide manpower/promoter, sampler, push girl/promoter, sampler, push girl - 2.jpg'
+
 function SubcategoryDetailPage() {
   const { serviceId, subcategoryId } = useParams()
   const navigate = useNavigate()
@@ -31,9 +36,9 @@ function SubcategoryDetailPage() {
         id: 'promoters-samplers-helpers',
         title: 'Promoter | Sampler | Push Girl | Helper',
         description: 'Experienced sampling specialists and promotional staff driving product trial and consumer interaction. Our team includes dedicated promoters who create excitement around your products, samplers who facilitate product trials and gather customer feedback, push girls who drive sales through personal interaction and product demonstrations, and helpers who provide essential support to ensure smooth operations during promotional events.',
-        image1: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=500&h=300&fit=crop',
-        image2: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=500&h=300&fit=crop',
-        image3: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=500&h=300&fit=crop'
+        image1: promoterImage1,
+        image2: promoterImage2,
+        image3: promoterImage3
       }
     },
     'onground-brandactivity-deployment-posminstallation-and-management-for-generaltrade-and-keyaccounts': {
@@ -122,13 +127,13 @@ function SubcategoryDetailPage() {
         </div>
         
         <div className="subcategory-images-grid">
-          <div className="subcategory-image-item">
+          <div className="subcategory-image-item subcategory-image-1">
             <img src={subcategory.image1} alt={`${subcategory.title} - Image 1`} />
           </div>
-          <div className="subcategory-image-item">
+          <div className="subcategory-image-item subcategory-image-2">
             <img src={subcategory.image2} alt={`${subcategory.title} - Image 2`} />
           </div>
-          <div className="subcategory-image-item">
+          <div className="subcategory-image-item subcategory-image-3 landscape-image">
             <img src={subcategory.image3} alt={`${subcategory.title} - Image 3`} />
           </div>
         </div>
