@@ -72,7 +72,7 @@ function Services() {
       <div className="services-header">
         <h1 className="services-title">Our Specialized Services</h1>
         <p className="services-subtitle">
-          We provide comprehensive brand activation and promotional solutions with nationwide reach, delivering exceptional results through strategic planning and professional execution.
+          We provide comprehensive brand activation and promotional solutions with nationwide reach, delivering exceptional results through strategic planning and professional execution. <br /> Photos may be provided upon request.
         </p>
       </div>
       
