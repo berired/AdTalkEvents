@@ -3,6 +3,14 @@ import { useParams } from 'react-router-dom'
 import ServiceDetail from '../components/ServiceDetail'
 import './ServiceDetailPage.css'
 
+import nationwideManpowerImage1 from '../assets/nationwide manpower/nationwide manpower deployment.png'
+import nationwideManpowerImage2 from '../assets/nationwide manpower/nationwide manpower deployment - 2.png'
+import nationwideManpowerImage3 from '../assets/nationwide manpower/nationwide manpower deployment - 3.png'
+
+import nationwidesellingImage1 from '../assets/selling activity/nationwide selling.png'
+import nationwidesellingImage2 from '../assets/selling activity/nationwide selling - 2.png'
+import nationwidesellingImage3 from '../assets/selling activity/nationwide selling - 3.png'
+
 function ServiceDetailPage() {
   const { id } = useParams()
   const [service, setService] = useState(null)
@@ -13,9 +21,9 @@ function ServiceDetailPage() {
       id: 'nationwide-manpower-deployment',
       title: 'Nationwide Manpower Deployment',
       description: 'Depending on the clients requirements our team makes a strategic process of allocating and utilizing a workforce to effectively meet organizational goals and project requirements. Skilled personnel such as promoter, sampler, push girl, sales associate, merchandiser, brand ambassadors.',
-      image1: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=500&h=300&fit=crop',
-      image2: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=500&h=300&fit=crop',
-      image3: 'https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=500&h=300&fit=crop',
+      image1: nationwideManpowerImage1,
+      image2: nationwideManpowerImage2,
+      image3: nationwideManpowerImage3,
       subcategories: [
         {
           id: 'promoter-sampler-push-girl-helper',
@@ -47,9 +55,9 @@ function ServiceDetailPage() {
       id: 'nationwide-sampling-selling-and-merchandising',
       title: 'Nationwide Sampling, Selling & Merchandising',
       description: 'Executing and overseeing the activity with seasoned team lead and account executives from our team.',
-      image1: 'https://images.unsplash.com/photo-1465101046530-73398c7f28ca?w=500&h=300&fit=crop',
-      image2: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=500&h=300&fit=crop',
-      image3: 'https://images.unsplash.com/photo-1557838923-2985c318be48?w=500&h=300&fit=crop'
+      image1: nationwidesellingImage1,
+      image2: nationwidesellingImage2,
+      image3: nationwidesellingImage3
     },
     {
       id: 'onground-brandactivity-deployment-posminstallation-and-management-for-generaltrade-and-keyaccounts',

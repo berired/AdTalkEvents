@@ -4,8 +4,8 @@ import './Home.css'
 // Import client logos
 import universalRobinaLogo from '../assets/company icons/universal robina logo.png'
 import kewpieLogo from '../assets/company icons/kewpie logo.png'
-import fordLogo from '../assets/company icons/ford logo.png'
-import casioLogo from '../assets/company icons/casio logo.png'
+import bradyPharmaLogo from '../assets/company icons/brady pharma.png'
+import tulipLogo from '../assets/company icons/tulip logo.png'
 import sunniesStudiosLogo from '../assets/company icons/sunnies studios logo.png'
 import federatedDistributorsLogo from '../assets/company icons/federated distributors logo.png'
 
@@ -13,8 +13,8 @@ function Home() {
   const clients = [
     { name: 'Universal Robina Corporation', logo: universalRobinaLogo},
     { name: 'Kewpie', logo: kewpieLogo},
-    { name: 'Ford', logo: fordLogo},
-    { name: 'Casio', logo: casioLogo},
+    { name: 'Brady Pharma', logo: bradyPharmaLogo},
+    { name: 'Tulip', logo: tulipLogo},
     { name: 'Sunnies Studios', logo: sunniesStudiosLogo},
     { name: 'Federated Distributors Inc', logo: federatedDistributorsLogo}
   ];

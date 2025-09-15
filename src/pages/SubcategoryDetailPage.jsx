@@ -3,9 +3,9 @@ import { useParams, useNavigate } from 'react-router-dom'
 import './SubcategoryDetailPage.css'
 
 // Import images
-import promoterImage1 from '../assets/nationwide manpower/promoter, sampler, push girl/promoter, sampler, push girl.jpg'
-import promoterImage2 from '../assets/nationwide manpower/promoter, sampler, push girl/promoter, sampler, push girl - 1.jpg'
-import promoterImage3 from '../assets/nationwide manpower/promoter, sampler, push girl/promoter, sampler, push girl - 2.jpg'
+import promoterImage1 from '../assets/nationwide manpower/promoter, sampler, push girl/promoter, sampler, push girl.png'
+import promoterImage2 from '../assets/nationwide manpower/promoter, sampler, push girl/promoter, sampler, push girl  - 2.png'
+import promoterImage3 from '../assets/nationwide manpower/promoter, sampler, push girl/promoter, sampler, push girl - 3.png'
 
 function SubcategoryDetailPage() {
   const { serviceId, subcategoryId } = useParams()
