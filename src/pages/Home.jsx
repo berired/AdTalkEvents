@@ -11,6 +11,7 @@ import federatedDistributorsLogo from '../assets/company icons/federated distrib
 import australiasOwnLogo from '../assets/company icons/australiasown logo.png'
 import eminaCheeseLogo from '../assets/company icons/eminacheese logo.png'
 import ovaltineLogo from '../assets/company icons/ovaltine logo.png'
+import qrCode from '../assets/adtalkqr.png'
 
 function Home() {
   const clients = [
@@ -20,9 +21,9 @@ function Home() {
     { name: 'Tulip', logo: tulipLogo},
     { name: 'Sunnies Studios', logo: sunniesStudiosLogo},
     { name: 'Federated Distributors Inc', logo: federatedDistributorsLogo},
-    {name: "Australia's Own", logo: australiasOwnLogo},
-    {name: "Emina Cheese", logo: eminaCheeseLogo},
-    {name: "Ovaltine", logo: ovaltineLogo},
+    { name: "Australia's Own", logo: australiasOwnLogo},
+    { name: "Emina Cheese", logo: eminaCheeseLogo},
+    { name: "Ovaltine", logo: ovaltineLogo},
   ];
 
   const services = [
@@ -70,7 +71,13 @@ function Home() {
           <p className="hero-subtitle">
            Building mutually beneficial relationships with clients and team members <strong><br />through the perfected art of listening.</strong>
           </p>
+
+          <div className="qr-code-container">
+            <img src={qrCode} alt="QR Code" className="qr-code" />
+          </div>
+
           <Link to="/contact" className="hero-cta-btn">Plan Your Event</Link>
+          
           <div className="hero-stats">
             <div className="stat">
               <span className="stat-icon">🎉</span>
