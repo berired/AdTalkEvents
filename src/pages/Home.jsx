@@ -8,6 +8,9 @@ import bradyPharmaLogo from '../assets/company icons/brady pharma.png'
 import tulipLogo from '../assets/company icons/tulip logo.png'
 import sunniesStudiosLogo from '../assets/company icons/sunnies studios logo.png'
 import federatedDistributorsLogo from '../assets/company icons/federated distributors logo.png'
+import australiasOwnLogo from '../assets/company icons/australiasown logo.png'
+import eminaCheeseLogo from '../assets/company icons/eminacheese logo.png'
+import ovaltineLogo from '../assets/company icons/ovaltine logo.png'
 
 function Home() {
   const clients = [
@@ -16,7 +19,10 @@ function Home() {
     { name: 'Brady Pharma', logo: bradyPharmaLogo},
     { name: 'Tulip', logo: tulipLogo},
     { name: 'Sunnies Studios', logo: sunniesStudiosLogo},
-    { name: 'Federated Distributors Inc', logo: federatedDistributorsLogo}
+    { name: 'Federated Distributors Inc', logo: federatedDistributorsLogo},
+    {name: "Australia's Own", logo: australiasOwnLogo},
+    {name: "Emina Cheese", logo: eminaCheeseLogo},
+    {name: "Ovaltine", logo: ovaltineLogo},
   ];
 
   const services = [
