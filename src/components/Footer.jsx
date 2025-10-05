@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import './Footer.css';
+import qrCode from '../assets/adtalkqr.png';
 
 function Footer() {
   return (
@@ -11,6 +12,12 @@ function Footer() {
             <div className="footer-logo">
               <h3>AdTalk Event Solutions Inc.</h3>
               <p className="footer-tagline">you Talk. we listen</p>
+
+           <div className="qr-code-container">
+            <img src={qrCode} alt="QR Code" className="qr-code" />
+            <p className="scan-text">Scan to view our website</p>
+          </div>
+            
             </div>
           </div>
 

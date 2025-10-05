@@ -20,7 +20,7 @@ function ServiceDetailPage() {
     {
       id: 'nationwide-manpower-deployment',
       title: 'Nationwide Manpower Deployment',
-      description: 'Depending on the clients requirements our team makes a strategic process of allocating and utilizing a workforce to effectively meet organizational goals and project requirements. Skilled personnel such as promoter, sampler, push girl, sales associate, merchandiser, brand ambassadors.',
+      description: "Depending on the client's requirements, our team makes a strategic process of allocating and utilizing a workforce to effectively meet organizational goals and project requirements. Skilled personnel such as promoter, sampler, push girl, sales associate, merchandiser, brand ambassadors.",
       image1: nationwideManpowerImage1,
       image2: nationwideManpowerImage2,
       image3: nationwideManpowerImage3,
