@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
 import './Home.css'
 
 // Import client logos
@@ -13,16 +14,23 @@ import eminaCheeseLogo from '../assets/company icons/eminacheese logo.png'
 import ovaltineLogo from '../assets/company icons/ovaltine logo.png'
 
 function Home() {
+  const [hoveredClient, setHoveredClient] = useState(null);
+  
   const clients = [
     { name: 'Universal Robina Corporation', logo: universalRobinaLogo},
     { name: 'Kewpie', logo: kewpieLogo},
     { name: 'Brady Pharma', logo: bradyPharmaLogo},
     { name: 'Tulip', logo: tulipLogo},
     { name: 'Sunnies Studios', logo: sunniesStudiosLogo},
-    { name: 'Federated Distributors Inc', logo: federatedDistributorsLogo},
-    { name: "Australia's Own", logo: australiasOwnLogo},
-    { name: "Emina Cheese", logo: eminaCheeseLogo},
-    { name: "Ovomaltine", logo: ovaltineLogo},
+    { 
+      name: 'Federated Distributors Inc', 
+      logo: federatedDistributorsLogo,
+      subClients: [
+        { name: "Australia's Own", logo: australiasOwnLogo},
+        { name: "Emina Cheese", logo: eminaCheeseLogo},
+        { name: "Ovomaltine", logo: ovaltineLogo},
+      ]
+    },
   ];
 
   const services = [
@@ -177,7 +185,12 @@ function Home() {
         <h2 className="section-title">Trusted by Leading Companies</h2>
         <div className="clients-grid">
           {clients.map((client, index) => (
-            <div key={index} className="client-card">
+            <div 
+              key={index} 
+              className={`client-card ${client.subClients ? 'has-sub-clients' : ''}`}
+              onMouseEnter={() => setHoveredClient(index)}
+              onMouseLeave={() => setHoveredClient(null)}
+            >
               <div className="client-logo">
                 <img src={client.logo} alt={`${client.name} logo`} />
               </div>
@@ -185,6 +198,47 @@ function Home() {
             </div>
           ))}
         </div>
+        
+        {/* Background Blur Overlay */}
+        {hoveredClient !== null && (
+          <div className="clients-blur-overlay"></div>
+        )}
+        
+        {/* Depth Effect Overlay - Positioned at document level */}
+        {hoveredClient !== null && (
+          <div 
+            className="client-depth-overlay"
+            onMouseEnter={() => setHoveredClient(hoveredClient)}
+            onMouseLeave={() => setHoveredClient(null)}
+          >
+            <div 
+              className="depth-content"
+            >
+              <div className="depth-main-client">
+                <div className="depth-client-logo">
+                  <img src={clients[hoveredClient].logo} alt={`${clients[hoveredClient].name} logo`} />
+                </div>
+                <h3 className="depth-client-name">{clients[hoveredClient].name}</h3>
+              </div>
+              
+              {clients[hoveredClient].subClients && (
+                <div className="depth-sub-clients">
+                  <h4 className="depth-sub-title">Our Brands</h4>
+                  <div className="depth-sub-grid">
+                    {clients[hoveredClient].subClients.map((subClient, subIndex) => (
+                      <div key={subIndex} className="depth-sub-item">
+                        <div className="depth-sub-logo">
+                          <img src={subClient.logo} alt={`${subClient.name} logo`} />
+                        </div>
+                        <span className="depth-sub-name">{subClient.name}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+        )}
       </section>
 
       {/* Why Choose Us Section */}
