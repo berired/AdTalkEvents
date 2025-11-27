@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import './Footer.css';
-import qrCode from '../assets/adtalkqr.png';
+import qrCode from '../assets/glamqr.png';
 
 function Footer() {
   return (
