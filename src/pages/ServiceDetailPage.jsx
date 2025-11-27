@@ -7,6 +7,10 @@ import nationwideManpowerImage1 from '../assets/nationwide manpower/nationwide m
 import nationwideManpowerImage2 from '../assets/nationwide manpower/nationwide manpower deployment - 2.png'
 import nationwideManpowerImage3 from '../assets/nationwide manpower/nationwide manpower deployment - 3.png'
 
+import nationwideTrainingImage1 from '../assets/nationwide training/nationwide training1.jpg'
+import nationwideTrainingImage2 from '../assets/nationwide training/nationwide training2.jpg'
+import nationwideTrainingImage3 from '../assets/nationwide training/nationwide training3.png'
+
 import nationwidesellingImage1 from '../assets/selling activity/nationwide selling.png'
 import nationwidesellingImage2 from '../assets/selling activity/nationwide selling - 2.png'
 import nationwidesellingImage3 from '../assets/selling activity/nationwide selling - 3.png'
@@ -46,10 +50,10 @@ function ServiceDetailPage() {
     {
       id: 'nationwide-training-capabilities',
       title: 'Nationwide Training Capabilities',
-      description: 'With our nationwide reach and satellite offices, nationwide training can enhance job satisfaction, booth sales and productivity, and lastly improve employee retention.',
-      image1: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=500&h=300&fit=crop',
-      image2: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=500&h=300&fit=crop',
-      image3: 'https://images.unsplash.com/photo-1515187029135-18ee286d815b?w=500&h=300&fit=crop'
+      description: 'With our nationwide reach and satellite offices, nationwide training can enhance job satisfaction, With our nationwide reach and satellite offices, our nationwide training programs can enhance job satisfaction, boost sales and productivity, and ultimately improve employee retention. In addition, we identify and secure professional, corporate training spaces across the country to ensure every session is conducted in a polished, business-appropriate environment. sales and productivity, and lastly improve employee retention.',
+      image1: nationwideTrainingImage1,
+      image2: nationwideTrainingImage2,
+      image3: nationwideTrainingImage3
     },
     {
       id: 'nationwide-sampling-selling-and-merchandising',

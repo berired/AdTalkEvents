@@ -12,12 +12,11 @@ function Footer() {
             <div className="footer-logo">
               <h3>AdTalk Event Solutions Inc.</h3>
               <p className="footer-tagline">you Talk. we listen</p>
-
-           <div className="qr-code-container">
-            <img src={qrCode} alt="QR Code" className="qr-code" />
-            <p className="scan-text">Scan to view our website</p>
-          </div>
-            
+              
+              <div className="footer-qr-section">
+                <p className="qr-label">Looking for something else?</p>
+                <img src={qrCode} alt="AdTalk QR Code" className="footer-qr-code" />
+              </div>
             </div>
           </div>
 

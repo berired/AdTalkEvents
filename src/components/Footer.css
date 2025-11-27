@@ -46,6 +46,33 @@
   margin: 1rem 0 0 0;
 }
 
+.footer-qr-section {
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+.qr-label {
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 0.8rem;
+  opacity: 0.95;
+}
+
+.footer-qr-code {
+  width: 120px;
+  height: 120px;
+  padding: 8px;
+  background: white;
+  border-radius: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.footer-qr-code:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
 .footer-links {
   list-style: none;
   padding: 0;

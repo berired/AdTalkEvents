@@ -187,7 +187,7 @@ function Home() {
           {clients.map((client, index) => (
             <div 
               key={index} 
-              className={`client-card ${client.subClients ? 'has-sub-clients' : ''}`}
+              className={`client-card ${client.subClients ? 'has-sub-clients' : ''} ${hoveredClient === index ? 'is-hovered' : ''}`}
               onMouseEnter={() => setHoveredClient(index)}
               onMouseLeave={() => setHoveredClient(null)}
             >
@@ -195,50 +195,26 @@ function Home() {
                 <img src={client.logo} alt={`${client.name} logo`} />
               </div>
               <h3 className="client-name">{client.name}</h3>
-            </div>
-          ))}
-        </div>
-        
-        {/* Background Blur Overlay */}
-        {hoveredClient !== null && (
-          <div className="clients-blur-overlay"></div>
-        )}
-        
-        {/* Depth Effect Overlay - Positioned at document level */}
-        {hoveredClient !== null && (
-          <div 
-            className="client-depth-overlay"
-            onMouseEnter={() => setHoveredClient(hoveredClient)}
-            onMouseLeave={() => setHoveredClient(null)}
-          >
-            <div 
-              className="depth-content"
-            >
-              <div className="depth-main-client">
-                <div className="depth-client-logo">
-                  <img src={clients[hoveredClient].logo} alt={`${clients[hoveredClient].name} logo`} />
-                </div>
-                <h3 className="depth-client-name">{clients[hoveredClient].name}</h3>
-              </div>
               
-              {clients[hoveredClient].subClients && (
-                <div className="depth-sub-clients">
-                  <h4 className="depth-sub-title">Our Brands</h4>
-                  <div className="depth-sub-grid">
-                    {clients[hoveredClient].subClients.map((subClient, subIndex) => (
-                      <div key={subIndex} className="depth-sub-item">
-                        <div className="depth-sub-logo">
+              {/* Sub-clients shown on hover within the card */}
+              {client.subClients && hoveredClient === index && (
+                <div className="sub-clients-container">
+                  <h4 className="sub-clients-title">Our Brands</h4>
+                  <div className="sub-clients-list">
+                    {client.subClients.map((subClient, subIndex) => (
+                      <div key={subIndex} className="sub-client-item">
+                        <div className="sub-client-logo">
                           <img src={subClient.logo} alt={`${subClient.name} logo`} />
                         </div>
-                        <span className="depth-sub-name">{subClient.name}</span>
+                        <span className="sub-client-name">{subClient.name}</span>
                       </div>
                     ))}
                   </div>
                 </div>
               )}
             </div>
-          </div>
-        )}
+          ))}
+        </div>
       </section>
 
       {/* Why Choose Us Section */}
@@ -246,7 +222,7 @@ function Home() {
         <div className="why-choose-content">
           <h2 className="section-title">why choose AdTalk?</h2>
           <p className="why-choose-intro">
-            With over 8 years of experience in the industry, we've built a reputation for excellence that sets us apart from the competition. Here's what makes us the preferred partner for leading brands across the Philippines:
+            With over 8 years of experience in the industry, we've built a reputation for excellence that sets us apart from the competition. Here's what makes us the preferred partner for leading brands across the Philippines
           </p>
           <div className="why-choose-grid">
             <div className="why-choose-item">
