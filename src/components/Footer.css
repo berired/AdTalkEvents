@@ -117,12 +117,13 @@
 .footer-contact .contact-icon {
   font-size: 1rem;
   min-width: 20px;
+  margin-top: 0.2rem;
 }
 
 .footer-contact a {
   color: #000000;
   text-decoration: none;
-  transition: color 0.3s ease;
+  transition: color 0.3s ease, opacity 0.3s ease;
 }
 
 .footer-contact .contact-item:hover a {

@@ -1,17 +1,38 @@
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
+import Seo from '../components/Seo'
+import { breadcrumbList, serviceSchema } from '../lib/seoSchema'
 import './SubcategoryDetailPage.css'
 
 // Import images
-import promoterImage1 from '../assets/nationwide manpower/promoter, sampler, push girl/promoter, sampler, push girl.png'
-import promoterImage2 from '../assets/nationwide manpower/promoter, sampler, push girl/promoter, sampler, push girl  - 2.png'
-import promoterImage3 from '../assets/nationwide manpower/promoter, sampler, push girl/promoter, sampler, push girl - 3.png'
+import promoterImage1 from '../assets/nationwide manpower/promoter, sampler, push girl/promoter, sampler, push girl.webp'
+import promoterImage2 from '../assets/nationwide manpower/promoter, sampler, push girl/promoter, sampler, push girl  - 2.webp'
+import promoterImage3 from '../assets/nationwide manpower/promoter, sampler, push girl/promoter, sampler, push girl - 3.webp'
+
+import sellingImage1 from '../assets/selling activity/nationwide selling.png'
+import sellingImage2 from '../assets/selling activity/nationwide selling - 2.png'
+import sellingImage3 from '../assets/selling activity/nationwide selling - 3.webp'
+
+import manpowerImage1 from '../assets/nationwide manpower/nationwide manpower deployment.webp'
+import manpowerImage2 from '../assets/nationwide manpower/nationwide manpower deployment - 2.png'
+import manpowerImage3 from '../assets/nationwide manpower/nationwide manpower deployment - 3.webp'
+
+import galleryImage1 from '../assets/gallery/1.webp'
+import galleryImage2 from '../assets/gallery/2.webp'
+import galleryImage3 from '../assets/gallery/3.webp'
+import galleryImage4 from '../assets/gallery/4.png'
+import galleryImage5 from '../assets/gallery/5.png'
+import galleryImage6 from '../assets/gallery/6.png'
+import galleryImage7 from '../assets/gallery/7.png'
+import galleryImage8 from '../assets/gallery/8.png'
+import galleryImage10 from '../assets/gallery/10.png'
+import galleryImage11 from '../assets/gallery/11.webp'
+import galleryImage12 from '../assets/gallery/12.png'
+import galleryImage13 from '../assets/gallery/13.webp'
 
 function SubcategoryDetailPage() {
   const { serviceId, subcategoryId } = useParams()
   const navigate = useNavigate()
-  const [subcategory, setSubcategory] = useState(null)
-  const [loading, setLoading] = useState(true)
 
   // Complete subcategory data with images
   const subcategoriesData = {
@@ -20,17 +41,17 @@ function SubcategoryDetailPage() {
         id: 'nationwide-manpower-deployment',
         title: 'Sales Associates & Merchandisers',
         description: 'Skilled retail professionals ensuring optimal product placement and customer engagement in retail environments. Our sales associates are trained to understand customer needs, provide excellent service, and drive sales through effective communication and product knowledge. Our merchandisers specialize in visual marketing, ensuring products are displayed attractively and strategically to maximize visibility and sales potential.',
-        image1: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=500&h=300&fit=crop',
-        image2: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=500&h=300&fit=crop',
-        image3: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&h=300&fit=crop'
+        image1: sellingImage1,
+        image2: sellingImage2,
+        image3: sellingImage3
       },
       'brand-ambassadors': {
         id: 'brand-ambassadors',
         title: 'Brand Ambassadors',
         description: 'Professional brand representatives trained to embody your brand values and engage with customers effectively. Our brand ambassadors are categorized into two classes based on their experience and capabilities: Class A - Premium brand representatives with extensive experience and exceptional communication skills, Class B - Standard brand ambassadors with solid training and proven track record. *Photos available upon request',
-        image1: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=500&h=300&fit=crop',
-        image2: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=500&h=300&fit=crop',
-        image3: 'https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?w=500&h=300&fit=crop'
+        image1: manpowerImage1,
+        image2: manpowerImage2,
+        image3: manpowerImage3
       },
       'promoter-sampler-push-girl-helper': {
         id: 'promoters-samplers-helpers',
@@ -46,48 +67,38 @@ function SubcategoryDetailPage() {
         id: 'interactive-installations',
         title: 'Interactive Installations',
         description: 'Engaging and interactive installations that enhance customer experience and brand visibility. Our interactive installations incorporate cutting-edge technology, creative design, and user-friendly interfaces to create memorable brand experiences. These installations are designed to encourage customer participation, generate social media buzz, and create lasting impressions that drive brand recall and customer loyalty.',
-        image1: 'https://images.unsplash.com/photo-1551818255-e6e10975bc17?w=500&h=300&fit=crop',
-        image2: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&h=300&fit=crop',
-        image3: 'https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=500&h=300&fit=crop'
+        image1: galleryImage10,
+        image2: galleryImage11,
+        image3: galleryImage12
       },
       'pop-up-shops': {
         id: 'pop-up-shops',
         title: 'Pop-Up Shops',
         description: 'Temporary retail spaces designed to create unique shopping experiences and promote brand engagement. Our pop-up shops are strategically located in high-traffic areas and designed to capture attention, create exclusivity, and drive immediate sales. We handle everything from location scouting and design to staffing and inventory management, ensuring a seamless and successful temporary retail experience.',
-        image1: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=500&h=300&fit=crop',
-        image2: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&h=300&fit=crop',
-        image3: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=500&h=300&fit=crop'
+        image1: galleryImage4,
+        image2: galleryImage5,
+        image3: galleryImage6
       },
       'community-partnerships': {
         id: 'community-partnerships',
         title: 'Community Partnerships',
         description: 'Collaborative efforts with local businesses and organizations to enhance brand presence and community engagement. Our community partnership programs focus on building meaningful relationships with local stakeholders, supporting community initiatives, and creating positive brand associations. We work closely with schools, local governments, NGOs, and community organizations to develop mutually beneficial partnerships that strengthen your brand presence in target markets.',
-        image1: 'https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?w=500&h=300&fit=crop',
-        image2: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=500&h=300&fit=crop',
-        image3: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=500&h=300&fit=crop'
+        image1: galleryImage1,
+        image2: galleryImage2,
+        image3: galleryImage3
       },
       'gamified-engagement-campaigns': {
         id: 'gamified-engagement-campaigns',
         title: 'Gamified Engagement Campaigns',
         description: 'Innovative campaigns that use gamification to engage customers and promote brand loyalty. Our gamified engagement campaigns incorporate elements such as points, badges, leaderboards, and rewards to create exciting and interactive experiences. These campaigns are designed to increase customer participation, extend engagement duration, and create positive emotional connections with your brand through fun and competitive activities.',
-        image1: 'https://images.unsplash.com/photo-1556155092-490a1ba16284?w=500&h=300&fit=crop',
-        image2: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=500&h=300&fit=crop',
-        image3: 'https://images.unsplash.com/photo-1551818255-e6e10975bc17?w=500&h=300&fit=crop'
+        image1: galleryImage13,
+        image2: galleryImage7,
+        image3: galleryImage8
       }
     }
   }
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      const serviceSubcategories = subcategoriesData[serviceId]
-      if (serviceSubcategories && serviceSubcategories[subcategoryId]) {
-        setSubcategory(serviceSubcategories[subcategoryId])
-      }
-      setLoading(false)
-    }, 500)
-
-    return () => clearTimeout(timer)
-  }, [serviceId, subcategoryId])
+  const subcategory = subcategoriesData[serviceId]?.[subcategoryId]
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' })
@@ -97,18 +108,10 @@ function SubcategoryDetailPage() {
     navigate(`/services/${serviceId}`)
   }
 
-  if (loading) {
-    return (
-      <div className="loading-container">
-        <div className="loading-spinner"></div>
-        <p>Loading subcategory details...</p>
-      </div>
-    )
-  }
-
   if (!subcategory) {
     return (
       <div className="loading-container">
+        <Seo title="Subcategory Not Found | AdTalk Events" description="The subcategory you're looking for doesn't exist. Explore AdTalk's nationwide manpower, training, and brand activation services." />
         <h2>Subcategory not found</h2>
         <p>The subcategory you're looking for doesn't exist.</p>
         <button onClick={handleBackClick} className="back-btn">Back to Service</button>
@@ -116,8 +119,22 @@ function SubcategoryDetailPage() {
     )
   }
 
+  const subcategoryPath = `/services/${serviceId}/subcategory/${subcategoryId}`
+
   return (
     <div className="subcategory-detail-page">
+      <Seo
+        title={`${subcategory.title} | AdTalk Events`}
+        description={subcategory.description}
+        structuredData={[
+          breadcrumbList([
+            { name: 'Home', path: '/' },
+            { name: 'Services', path: '/services' },
+            { name: subcategory.title, path: subcategoryPath },
+          ]),
+          serviceSchema({ name: subcategory.title, description: subcategory.description, path: subcategoryPath }),
+        ]}
+      />
       <div className="subcategory-detail-container">
         <div className="subcategory-detail-header">
           <button onClick={handleBackClick} className="back-btn">
@@ -128,13 +145,13 @@ function SubcategoryDetailPage() {
         
         <div className="subcategory-images-grid">
           <div className="subcategory-image-item subcategory-image-1">
-            <img src={subcategory.image1} alt={`${subcategory.title} - Image 1`} />
+            <img src={subcategory.image1} alt={`${subcategory.title} - Image 1`} loading="lazy" />
           </div>
           <div className="subcategory-image-item subcategory-image-2">
-            <img src={subcategory.image2} alt={`${subcategory.title} - Image 2`} />
+            <img src={subcategory.image2} alt={`${subcategory.title} - Image 2`} loading="lazy" />
           </div>
           <div className="subcategory-image-item subcategory-image-3 landscape-image">
-            <img src={subcategory.image3} alt={`${subcategory.title} - Image 3`} />
+            <img src={subcategory.image3} alt={`${subcategory.title} - Image 3`} loading="lazy" />
           </div>
         </div>
         

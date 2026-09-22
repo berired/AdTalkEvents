@@ -1,24 +1,28 @@
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import ServiceDetail from '../components/ServiceDetail'
+import Seo from '../components/Seo'
+import { breadcrumbList, serviceSchema } from '../lib/seoSchema'
 import './ServiceDetailPage.css'
 
-import nationwideManpowerImage1 from '../assets/nationwide manpower/nationwide manpower deployment.png'
+import nationwideManpowerImage1 from '../assets/nationwide manpower/nationwide manpower deployment.webp'
 import nationwideManpowerImage2 from '../assets/nationwide manpower/nationwide manpower deployment - 2.png'
-import nationwideManpowerImage3 from '../assets/nationwide manpower/nationwide manpower deployment - 3.png'
+import nationwideManpowerImage3 from '../assets/nationwide manpower/nationwide manpower deployment - 3.webp'
 
-import nationwideTrainingImage1 from '../assets/nationwide training/nationwide training1.jpg'
-import nationwideTrainingImage2 from '../assets/nationwide training/nationwide training2.jpg'
-import nationwideTrainingImage3 from '../assets/nationwide training/nationwide training3.png'
+import nationwideTrainingImage1 from '../assets/nationwide training/nationwide training1.webp'
+import nationwideTrainingImage2 from '../assets/nationwide training/nationwide training2.webp'
+import nationwideTrainingImage3 from '../assets/nationwide training/nationwide training3.webp'
 
 import nationwidesellingImage1 from '../assets/selling activity/nationwide selling.png'
 import nationwidesellingImage2 from '../assets/selling activity/nationwide selling - 2.png'
-import nationwidesellingImage3 from '../assets/selling activity/nationwide selling - 3.png'
+import nationwidesellingImage3 from '../assets/selling activity/nationwide selling - 3.webp'
+
+import posmImage1 from '../assets/gallery/7.png'
+import posmImage2 from '../assets/gallery/8.png'
+import posmImage3 from '../assets/gallery/9.png'
 
 function ServiceDetailPage() {
   const { id } = useParams()
-  const [service, setService] = useState(null)
-  const [loading, setLoading] = useState(true)
 
   const servicesData = [
     {
@@ -71,9 +75,9 @@ function ServiceDetailPage() {
         </>
       ),
       description: 'Professional merchandising installation services for general trade outlets and key account establishments.',
-      image1: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&h=300&fit=crop',
-      image2: 'https://images.unsplash.com/photo-1557838923-2985c318be48?w=500&h=300&fit=crop',
-      image3: 'https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=500&h=300&fit=crop',
+      image1: posmImage1,
+      image2: posmImage2,
+      image3: posmImage3,
       subcategories: [
         {
           id: 'interactive-installations',
@@ -99,40 +103,41 @@ function ServiceDetailPage() {
     }
   ]
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      const foundService = servicesData.find(s => s.id === id)
-      setService(foundService)
-      setLoading(false)
-    }, 500)
-
-    return () => clearTimeout(timer)
-  }, [id])
+  const service = servicesData.find(s => s.id === id)
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }, [id])
 
-  if (loading) {
-    return (
-      <div className="loading-container">
-        <div className="loading-spinner"></div>
-        <p>Loading service details...</p>
-      </div>
-    )
-  }
-
   if (!service) {
     return (
       <div className="loading-container">
+        <Seo title="Service Not Found | AdTalk Events" description="The service you're looking for doesn't exist. Explore AdTalk's nationwide manpower, training, and brand activation services." />
         <h2>Service not found</h2>
         <p>The service you're looking for doesn't exist.</p>
       </div>
     )
   }
 
+  const serviceTitle = typeof service.title === 'string'
+    ? service.title
+    : 'On-Ground Brand Activity Deployment & POSM Installation'
+  const servicePath = `/services/${service.id}`
+
   return (
     <div className="service-detail-page">
+      <Seo
+        title={`${serviceTitle} | AdTalk Events`}
+        description={service.description}
+        structuredData={[
+          breadcrumbList([
+            { name: 'Home', path: '/' },
+            { name: 'Services', path: '/services' },
+            { name: serviceTitle, path: servicePath },
+          ]),
+          serviceSchema({ name: serviceTitle, description: service.description, path: servicePath }),
+        ]}
+      />
       <ServiceDetail service={service} />
     </div>
   )

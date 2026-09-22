@@ -103,7 +103,7 @@
 .service-detail-description {
   font-size: 1.1rem;
   line-height: 1.8;
-  color: var(--color-secondary);
+  color: var(--color-muted);
   margin-bottom: 3rem;
 }
 
@@ -153,7 +153,7 @@
 }
 
 .subcategory-card p {
-  color: var(--color-secondary);
+  color: var(--color-muted);
   line-height: 1.6;
   margin-bottom: 1rem;
 }
@@ -177,7 +177,7 @@
 }
 
 .sub-items li {
-  color: var(--color-secondary);
+  color: var(--color-muted);
   padding: 0.3rem 0;
   padding-left: 0;
   position: relative;

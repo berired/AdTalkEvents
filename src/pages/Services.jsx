@@ -1,17 +1,23 @@
 import { useNavigate } from 'react-router-dom'
 import './Services.css'
+import Seo from '../components/Seo'
+import { breadcrumbList } from '../lib/seoSchema'
 
-import nationwideManpowerImage1 from '../assets/nationwide manpower/nationwide manpower deployment.png'
+import nationwideManpowerImage1 from '../assets/nationwide manpower/nationwide manpower deployment.webp'
 import nationwideManpowerImage2 from '../assets/nationwide manpower/nationwide manpower deployment - 2.png'
-import nationwideManpowerImage3 from '../assets/nationwide manpower/nationwide manpower deployment - 3.png'
+import nationwideManpowerImage3 from '../assets/nationwide manpower/nationwide manpower deployment - 3.webp'
 
-import nationwideTrainingImage1 from '../assets/nationwide training/nationwide training1.jpg'
-import nationwideTrainingImage2 from '../assets/nationwide training/nationwide training2.jpg'
-import nationwideTrainingImage3 from '../assets/nationwide training/nationwide training3.png'
+import nationwideTrainingImage1 from '../assets/nationwide training/nationwide training1.webp'
+import nationwideTrainingImage2 from '../assets/nationwide training/nationwide training2.webp'
+import nationwideTrainingImage3 from '../assets/nationwide training/nationwide training3.webp'
 
 import nationwidesellingImage1 from '../assets/selling activity/nationwide selling.png'
 import nationwidesellingImage2 from '../assets/selling activity/nationwide selling - 2.png'
-import nationwidesellingImage3 from '../assets/selling activity/nationwide selling - 3.png'
+import nationwidesellingImage3 from '../assets/selling activity/nationwide selling - 3.webp'
+
+import posmImage1 from '../assets/gallery/7.png'
+import posmImage2 from '../assets/gallery/8.png'
+import posmImage3 from '../assets/gallery/9.png'
 
 
 function Services() {
@@ -69,9 +75,9 @@ function Services() {
         </>
       ),
       description: 'Professional merchandising installation services for general trade outlets and key account establishments.',
-      image1: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&h=300&fit=crop',
-      image2: 'https://images.unsplash.com/photo-1557838923-2985c318be48?w=500&h=300&fit=crop',
-      image3: 'https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=500&h=300&fit=crop'
+      image1: posmImage1,
+      image2: posmImage2,
+      image3: posmImage3
     }
   ]
 
@@ -82,6 +88,14 @@ function Services() {
 
   return (
     <div className="services-container">
+      <Seo
+        title="Our Services | AdTalk Events"
+        description="Explore AdTalk's nationwide services: manpower deployment, training, sampling & selling, merchandising, and on-ground brand activation for general trade and key accounts."
+        structuredData={breadcrumbList([
+          { name: 'Home', path: '/' },
+          { name: 'Services', path: '/services' },
+        ])}
+      />
       <div className="services-header">
         <h1 className="services-title">Our Specialized Services</h1>
         <p className="services-subtitle">
@@ -93,9 +107,9 @@ function Services() {
         {services.map((service) => (
           <div key={service.id} className="service-item" onClick={() => handleServiceClick(service.id)}>
             <div className="service-images">
-              <img src={service.image1} alt={`${service.title} 1`} />
-              <img src={service.image2} alt={`${service.title} 2`} />
-              <img src={service.image3} alt={`${service.title} 3`} />
+              <img src={service.image1} alt={`${service.title} 1`} loading="lazy" />
+              <img src={service.image2} alt={`${service.title} 2`} loading="lazy" />
+              <img src={service.image3} alt={`${service.title} 3`} loading="lazy" />
             </div>
             <div className="service-info">
               <h3>{service.title}</h3>

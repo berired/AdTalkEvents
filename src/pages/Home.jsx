@@ -1,6 +1,17 @@
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import {
+  PartyPopper,
+  Handshake,
+  Star,
+  Globe,
+  UserCheck,
+  Trophy,
+  PackageSearch,
+  GraduationCap,
+  ClipboardList,
+} from 'lucide-react';
 import './Home.css'
+import Seo from '../components/Seo'
 
 // Import client logos
 import universalRobinaLogo from '../assets/company icons/universal robina logo.png'
@@ -12,48 +23,48 @@ import federatedDistributorsLogo from '../assets/company icons/federated distrib
 import australiasOwnLogo from '../assets/company icons/australiasown logo.png'
 import eminaCheeseLogo from '../assets/company icons/eminacheese logo.png'
 import ovaltineLogo from '../assets/company icons/ovaltine logo.png'
+import casioLogo from '../assets/company icons/casio logo.png'
+import fordLogo from '../assets/company icons/ford logo.png'
+
+// Real activation photos, standing in for generic stock icons on the service cards
+import manpowerThumb from '../assets/nationwide manpower/nationwide manpower deployment.webp'
+import trainingThumb from '../assets/nationwide training/nationwide training1.webp'
+import sellingThumb from '../assets/selling activity/nationwide selling.png'
+import posmThumb from '../assets/gallery/7.png'
 
 function Home() {
-  const [hoveredClient, setHoveredClient] = useState(null);
-  
   const clients = [
-    { name: 'Universal Robina Corporation', logo: universalRobinaLogo},
-    { name: 'Kewpie', logo: kewpieLogo},
-    { name: 'Brady Pharma', logo: bradyPharmaLogo},
-    { name: 'Tulip', logo: tulipLogo},
-    { name: 'Sunnies Studios', logo: sunniesStudiosLogo},
-    { 
-      name: 'Federated Distributors Inc', 
-      logo: federatedDistributorsLogo,
-      subClients: [
-        { name: "Australia's Own", logo: australiasOwnLogo},
-        { name: "Emina Cheese", logo: eminaCheeseLogo},
-        { name: "Ovomaltine", logo: ovaltineLogo},
-      ]
-    },
+    { name: 'Universal Robina Corporation', logo: universalRobinaLogo },
+    { name: 'Kewpie', logo: kewpieLogo },
+    { name: 'Brady Pharma', logo: bradyPharmaLogo },
+    { name: 'Tulip', logo: tulipLogo },
+    { name: 'Sunnies Studios', logo: sunniesStudiosLogo },
+    { name: 'Federated Distributors Inc', logo: federatedDistributorsLogo },
+    { name: "Australia's Own", logo: australiasOwnLogo },
+    { name: 'Emina Cheese', logo: eminaCheeseLogo },
+    { name: 'Ovomaltine', logo: ovaltineLogo },
+    { name: 'Casio', logo: casioLogo },
+    { name: 'Ford', logo: fordLogo },
   ];
 
   const services = [
     {
       id: 'nationwide-manpower-deployment',
       title: 'NATIONWIDE MANPOWER DEPLOYMENT',
-    icon: (
-      <div style={{ fontSize: '1.2rem', lineHeight: '1', textAlign: 'center' }}>
-        <div>👤</div>
-        <div style={{ marginTop: '-2px' }}>👥👥</div>
-        <div style={{ marginTop: '-2px' }}>👥👥👥</div>
-      </div>
-    )
+      description: 'Skilled personnel deployment including flyering agents, sales associates, merchandisers, samplers, push girls, and brand ambassadors.',
+      thumb: manpowerThumb
     },
      {
       id: 'nationwide-training-capabilities',
       title: 'NATIONWIDE TRAINING CAPABILITIES',
-      icon: '📚'
+      description: 'We train your team nationwide, ensuring consistent brand messaging and product knowledge across all locations.',
+      thumb: trainingThumb
     },
     {
       id:'nationwide-sampling-selling-and-merchandising',
       title: 'NATIONWIDE SAMPLING, SELLING & MERCHANDISING',
-      icon: '🛍️'
+      description: 'Executing and overseeing the activity with seasoned team leads and account executives from our team.',
+      thumb: sellingThumb
     },
     {
       id: 'onground-brandactivity-deployment-posminstallation-and-management-for-generaltrade-and-keyaccounts',
@@ -62,13 +73,18 @@ function Home() {
           ON-GROUND BRAND ACTIVITY DEPLOYMENT<br />POSM INSTALLATION AND MANAGEMENT FOR GENERAL TRADE AND KEY ACCOUNT
         </>
       ),
-      icon: '🛒'
+      description: 'Professional merchandising installation for general trade outlets and key account establishments.',
+      thumb: posmThumb
     },
-    
+
   ];
 
   return (
     <div className="home-container">
+      <Seo
+        title="AdTalk Events | Nationwide Manpower & Brand Activation"
+        description="AdTalk Event Solutions provides nationwide manpower deployment, training, sampling, selling, and merchandising for brands across the Philippines. 1000+ projects completed, 8+ years of experience."
+      />
       {/* Hero Section */}
       <section className="hero-section">
         <div className="hero-content">
@@ -83,17 +99,17 @@ function Home() {
           
           <div className="hero-stats">
             <div className="stat">
-              <span className="stat-icon">🎉</span>
+              <span className="stat-icon"><PartyPopper size={35} aria-hidden="true" /></span>
               <span className="stat-number">1000+</span>
               <span className="stat-label">Projects Completed</span>
             </div>
             <div className="stat">
-              <span className="stat-icon">🤝</span>
-              <span className="stat-number">6</span>
+              <span className="stat-icon"><Handshake size={35} aria-hidden="true" /></span>
+              <span className="stat-number">{clients.length}+</span>
               <span className="stat-label">Clients</span>
             </div>
             <div className="stat">
-              <span className="stat-icon">⭐</span>
+              <span className="stat-icon"><Star size={35} aria-hidden="true" /></span>
               <span className="stat-number">8</span>
               <span className="stat-label">Years of Experience</span>
             </div>
@@ -128,7 +144,7 @@ function Home() {
       <section className="services-section">
         <h2 className="section-title">OUR SPECIALIZED SERVICES</h2>
         <p className="services-intro">We provide comprehensive brand activation and promotional solutions with nationwide reach</p>
-        <div className="services-grid">
+        <div className="home-services-grid">
           {services.map((service, index) => (
             <Link 
               key={index} 
@@ -136,7 +152,9 @@ function Home() {
               className="service-card-link"
             >
               <div className="service-card">
-                <div className="service-icon">{service.icon}</div>
+                <div className="service-thumb">
+                  <img src={service.thumb} alt="" loading="lazy" />
+                </div>
                 <h3 className="service-title">{service.title}</h3>
                 <p className="service-description">{service.description}</p>
               </div>
@@ -150,70 +168,41 @@ function Home() {
       {/* Manpower Deployment Section */}
       <section className="manpower-section">
         <h2 className="section-title">PROFESSIONAL MANPOWER DEPLOYMENT</h2>
-        <p className="manpower-intro">Our skilled personnel are trained to represent your brand with excellence:</p>
-        <div className="manpower-grid">
-
-          <div className="manpower-card">
-            <div className="manpower-icon">🔍</div>
+        <p className="manpower-intro">Our skilled personnel are trained to represent your brand with excellence, through a process that runs in order:</p>
+        <ol className="process-steps">
+          <li className="process-step">
             <h3>Sourcing</h3>
-            <p>We have a good number of contacts and agents that provides us a pool of quality candidates
+            <p>We have a good number of contacts and agents that provide us a pool of quality candidates
               in line with the client's preference and requirements.
             </p>
-          </div>
-          <div className="manpower-card">
-            <div className="manpower-icon">📚</div>
+          </li>
+          <li className="process-step">
             <h3>Training</h3>
-            <p>We make our training as comprehensive as possible. It is our duty as people managers to ensure proper product knowledge, project mechanics and compliance with certain
-              rules and regulations related to the products and project we are handling.
+            <p>We make our training as comprehensive as possible, ensuring proper product knowledge, project mechanics and compliance with the rules and regulations related to the project.
             </p>
-          </div>
-          <div className="manpower-card">
-            <div className="manpower-icon">⚙️</div>
+          </li>
+          <li className="process-step">
             <h3>Managing</h3>
-              <p>Seamless deployments, this our main goal. <br />Our team of dedicated managers and account executives make sure that each operation we have has zero error.</p>
-          </div>
-          <div className="manpower-card">
-            <div className="manpower-icon">📊</div>
+            <p>Seamless deployments are our main goal. Our team of dedicated managers and account executives make sure that each operation we run has zero error.</p>
+          </li>
+          <li className="process-step">
             <h3>Monitoring</h3>
-              <p>Each account executive monitor daily operations and provide effective and efficient solutions to any situation and challenges that arise in the project. Weekly submission of accurate sales report.</p>
-            </div>
-        </div>
+            <p>Each account executive monitors daily operations and provides effective solutions to any challenge that arises, with weekly submission of accurate sales reports.</p>
+          </li>
+        </ol>
       </section>
 
       {/* Clients Section */}
       <section className="clients-section">
-        <h2 className="section-title">Trusted by Leading Companies</h2>
-        <div className="clients-grid">
-          {clients.map((client, index) => (
-            <div 
-              key={index} 
-              className={`client-card ${client.subClients ? 'has-sub-clients' : ''} ${hoveredClient === index ? 'is-hovered' : ''}`}
-              onMouseEnter={() => setHoveredClient(index)}
-              onMouseLeave={() => setHoveredClient(null)}
-            >
-              <div className="client-logo">
-                <img src={client.logo} alt={`${client.name} logo`} />
+        <h2 className="clients-title">Trusted by Leading Companies</h2>
+        <div className="clients-carousel">
+          <div className="clients-track">
+            {[...clients, ...clients].map((client, index) => (
+              <div className="client-logo-item" key={index}>
+                <img src={client.logo} alt={client.name} loading="lazy" />
               </div>
-              <h3 className="client-name">{client.name}</h3>
-              
-              {/* Sub-clients shown on hover within the card */}
-              {client.subClients && hoveredClient === index && (
-                <div className="sub-clients-container">
-                  <h4 className="sub-clients-title">Our Brands</h4>
-                  <div className="sub-clients-list">
-                    {client.subClients.map((subClient, subIndex) => (
-                      <div key={subIndex} className="sub-client-item">
-                        <div className="sub-client-logo">
-                          <img src={subClient.logo} alt={`${subClient.name} logo`} />
-                        </div>
-                        <span className="sub-client-name">{subClient.name}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </section>
 
@@ -226,34 +215,34 @@ function Home() {
           </p>
           <div className="why-choose-grid">
             <div className="why-choose-item">
-              <div className="why-choose-icon">🌏</div>
+              <div className="why-choose-icon"><Globe size={40} aria-hidden="true" /></div>
               <h3>Nationwide Coverage & Operations</h3>
-              <p>Our extensive network spans across all major cities and provinces in the Philippines. From Metro Manila to remote municipalities, we have the infrastructure and local partnerships to execute promotional campaigns anywhere in the country. Our regional teams understand local market dynamics, cultural nuances, and consumer behavior, ensuring your brand message resonates with target audiences nationwide.</p>
+              <p>Extensive coverage across Metro Manila and the provinces, with regional teams who understand local market dynamics and consumer behavior.</p>
             </div>
             <div className="why-choose-item">
-              <div className="why-choose-icon">👥</div>
+              <div className="why-choose-icon"><UserCheck size={40} aria-hidden="true" /></div>
               <h3>Comprehensive Manpower Solutions</h3>
-              <p>We maintain a roster of trained professionals including brand ambassadors, sales associates, merchandisers, and promotional staff. Our rigorous recruitment process ensures we only work with Class A to Class C certified personnel. Each team member undergoes comprehensive product training, customer service workshops, and brand alignment sessions before deployment.</p>
+              <p>A vetted roster of Class A to Class C brand ambassadors, sales associates, and merchandisers, each trained before deployment.</p>
             </div>
             <div className="why-choose-item">
-              <div className="why-choose-icon">🏆</div>
+              <div className="why-choose-icon"><Trophy size={40} aria-hidden="true" /></div>
               <h3>Proven Track Record with Industry Leaders</h3>
-              <p>Our portfolio includes successful partnerships with Fortune 500 companies like Universal Robina Corporation, Ford, and Casio. We've executed over 1,000 projects with a 98% client satisfaction rate. Our case studies demonstrate consistent ROI improvements, increased brand awareness, and measurable sales growth for our clients across various industries.</p>
+              <p>1,000+ projects and a 98% client satisfaction rate with partners like Universal Robina Corporation, Ford, and Casio.</p>
             </div>
             <div className="why-choose-item">
-              <div className="why-choose-icon">🛒</div>
+              <div className="why-choose-icon"><PackageSearch size={40} aria-hidden="true" /></div>
               <h3>Expert Merchandising & Retail Excellence</h3>
-              <p>Our merchandising specialists are trained in visual marketing, planogram compliance, and inventory management. We work closely with both general trade outlets and key accounts to ensure optimal product placement, attractive displays, and maximum shelf visibility. Our retail solutions include space optimization, promotional material installation, and real-time inventory monitoring.</p>
+              <p>Planogram-trained specialists optimizing shelf visibility, displays, and inventory across general trade and key accounts.</p>
             </div>
             <div className="why-choose-item">
-              <div className="why-choose-icon">🎓</div>
+              <div className="why-choose-icon"><GraduationCap size={40} aria-hidden="true" /></div>
               <h3>Professional Training & Quality Assurance</h3>
-              <p>Every team member completes our proprietary training program covering product knowledge, sales techniques, customer engagement, and brand representation. We conduct regular performance evaluations, mystery shopper assessments, and continuous skill development workshops. Our quality assurance team monitors all operations to maintain the highest standards of service delivery.</p>
+              <p>Every team member completes product, sales, and brand training, backed by ongoing mystery-shopper quality checks.</p>
             </div>
             <div className="why-choose-item">
-              <div className="why-choose-icon">📋</div>
+              <div className="why-choose-icon"><ClipboardList size={40} aria-hidden="true" /></div>
               <h3>Dedicated Account Management & Analytics</h3>
-              <p>Each client is assigned a dedicated account executive who provides personalized service and strategic guidance. We deliver comprehensive reports including daily operation summaries, sales performance metrics, customer feedback analysis, and market insights. Our data-driven approach helps clients make informed decisions and optimize their promotional strategies.</p>
+              <p>A dedicated account executive per client, with regular reports on operations, sales performance, and market insights.</p>
             </div>
           </div>
         </div>

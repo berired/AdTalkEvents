@@ -142,7 +142,7 @@
 .subcategory-detail-description {
   font-size: 1.1rem;
   line-height: 1.8;
-  color: var(--color-secondary);
+  color: var(--color-muted);
   margin-bottom: 3rem;
 }
 

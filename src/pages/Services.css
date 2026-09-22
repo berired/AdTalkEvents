@@ -23,7 +23,7 @@
 
 .services-subtitle {
   font-size: 1.2rem;
-  color: var(--color-secondary);
+  color: var(--color-muted);
   margin: 0;
   max-width: 600px;
   margin: 0 auto;
@@ -112,7 +112,7 @@
 }
 
 .service-info p {
-  color: var(--color-secondary);
+  color: var(--color-muted);
   line-height: 1.6;
   margin-bottom: 1.5rem;
   flex-grow: 1;
@@ -165,10 +165,11 @@
     padding: 0 1rem;
   }
   
-  .service-item {
-    grid-template-columns: 1fr !important;
+  .service-item,
+  .service-item:nth-child(even) {
+    grid-template-columns: 1fr;
   }
-  
+
   .service-item:nth-child(even) .service-images {
     order: 1;
   }

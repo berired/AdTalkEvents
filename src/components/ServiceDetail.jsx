@@ -46,16 +46,16 @@ function ServiceDetail({ service, onBack }) {
       
       <div className="service-images-grid">
         <div className="service-image-item">
-          <img src={service.image1 || 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=500&h=300&fit=crop'} alt={`${service.title} - Image 1`} />
+          <img src={service.image1} alt={`${service.title} - Image 1`} loading="lazy" />
         </div>
         <div className="service-image-item">
-          <img src={service.image2 || 'https://images.unsplash.com/photo-1515187029135-18ee286d815b?w=500&h=300&fit=crop'} alt={`${service.title} - Image 2`} />
+          <img src={service.image2} alt={`${service.title} - Image 2`} loading="lazy" />
         </div>
         <div className="service-image-item">
-          <img src={service.image3 || 'https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=500&h=300&fit=crop'} alt={`${service.title} - Image 3`} />
+          <img src={service.image3} alt={`${service.title} - Image 3`} loading="lazy" />
         </div>
       </div>
-      
+
       <div className="service-detail-content">
         <h2>Service Details</h2>
         <p className="service-detail-description">{service.description}</p>

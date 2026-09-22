@@ -1,3 +1,20 @@
+:root {
+  --color-bg: #f7f3f3;
+  --color-text: #181818;
+  --color-primary: #c82333;
+  --color-secondary: #a71d31;
+  --color-bg-gradient: linear-gradient(90deg, #c82333 0%, #a71d31 100%);
+  --color-bg-light: #fff6f6;
+  --color-card: #fffaf9;
+  --color-card-alt: #f3eaea;
+  --color-accent: #c82333;
+  --color-text-on-primary: #fff;
+  /* Neutral ink for body copy, kept separate from the brand red so red stays
+     reserved for headings, links and buttons instead of every line of text. */
+  --color-ink: #2b2420;
+  --color-muted: #6b6058;
+}
+
 #root {
   width: 100%;
   padding: 0;
@@ -74,10 +91,10 @@ html {
 }
 
 /* Focus styles for accessibility */
-button:focus,
-input:focus,
-textarea:focus,
-a:focus {
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+a:focus-visible {
   outline: 2px solid #667eea;
   outline-offset: 2px;
 }

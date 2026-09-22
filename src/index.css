@@ -56,3 +56,18 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+/* Collapse every animation/transition to (near) zero instead of `animation: none`,
+   so `forwards`-filled reveal animations still land on their visible end state
+   rather than getting stuck at their `from` (opacity: 0) keyframe. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0s !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
