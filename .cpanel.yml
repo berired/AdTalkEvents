@@ -2,7 +2,7 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/home/adtalk/public_html/
-    - bash -c '{ echo "--node--"; which node 2>&1; echo "--npm--"; which npm 2>&1; echo "--opt-cpanel--"; ls /opt/cpanel/ 2>&1 | grep -i node; echo "--alt-nodejs--"; ls /opt/alt/ 2>&1 | grep -i node; echo "--nodevenv--"; ls -la ~/nodevenv 2>&1; echo "--path--"; echo "$PATH"; } > /home/adtalk/deploy-diag.log 2>&1'
+    - bash -c '{ for v in 24 22 20 18; do echo "--alt-nodejs$v/root/usr/bin--"; ls /opt/alt/alt-nodejs$v/root/usr/bin/ 2>&1 | grep -E "^(node|npm)$"; /opt/alt/alt-nodejs$v/root/usr/bin/node --version 2>&1; done; } > /home/adtalk/deploy-diag.log 2>&1'
     - /usr/bin/npm ci
     - /usr/bin/npm run build
     - /bin/cp -r dist/. $DEPLOYPATH
