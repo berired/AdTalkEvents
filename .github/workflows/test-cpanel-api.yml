@@ -33,7 +33,8 @@ jobs:
             echo ""
           }
 
-          probe "VersionControl/update (with branch param)" --get "${BASE}/VersionControl/update" --data-urlencode "repository_root=${REPO_ROOT}" --data-urlencode "branch=master"
+          probe "Fileman/get_file_content (deploy log)" --get "${BASE}/Fileman/get_file_content" --data-urlencode "dir=/home/adtalk/.cpanel/logs" --data-urlencode "file=vc_1790163354.86944_git_deploy.log"
+          probe "VersionControl/update (recheck tasks)" --get "${BASE}/VersionControl/update" --data-urlencode "repository_root=${REPO_ROOT}" --data-urlencode "branch=master"
 
           echo "Done reading all probes above."
           exit 0
