@@ -4,5 +4,6 @@ deployment:
     - export DEPLOYPATH=/home/adtalk/public_html/
     - export PATH=/opt/alt/alt-nodejs20/root/usr/bin:$PATH
     - npm ci
+    - bash -c '{ echo "--ulimit--"; ulimit -a; echo "--cgroup v1--"; cat /sys/fs/cgroup/memory/memory.limit_in_bytes 2>&1; echo "--cgroup v2--"; cat /sys/fs/cgroup/memory.max 2>&1; echo "--totalmem--"; node -e "console.log(require(\"os\").totalmem())"; echo "--rollup native--"; ls node_modules/@rollup/ 2>&1; node -e "require(\"@rollup/rollup-linux-x64-gnu\")" 2>&1; } > /home/adtalk/deploy-diag.log 2>&1'
     - npm run build
     - /bin/cp -r dist/. $DEPLOYPATH

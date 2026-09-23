@@ -48,4 +48,12 @@ jobs:
             --data-urlencode "file=${LOG_FILE}")
           echo "${LOGCONTENT_RAW}" | jq -r '.data.content'
 
+          echo ""
+          echo "== Fileman/get_file_content (memory diag) =="
+          MEMDIAG_RAW=$(curl -sS -H "Authorization: ${AUTH}" \
+            --get "${BASE}/Fileman/get_file_content" \
+            --data-urlencode "dir=/home/adtalk" \
+            --data-urlencode "file=deploy-diag.log")
+          echo "${MEMDIAG_RAW}" | jq -r '.data.content'
+
           exit 0
