@@ -33,8 +33,10 @@ jobs:
             echo ""
           }
 
-          probe "Fileman/get_file_content (deploy log)" --get "${BASE}/Fileman/get_file_content" --data-urlencode "dir=/home/adtalk/.cpanel/logs" --data-urlencode "file=vc_1790163354.86944_git_deploy.log"
-          probe "VersionControl/update (recheck tasks)" --get "${BASE}/VersionControl/update" --data-urlencode "repository_root=${REPO_ROOT}" --data-urlencode "branch=master"
+          probe "VersionControl/update" --get "${BASE}/VersionControl/update" --data-urlencode "repository_root=${REPO_ROOT}" --data-urlencode "branch=master"
+          probe "VersionControlDeployment/create" --get "${BASE}/VersionControlDeployment/create" --data-urlencode "repository_root=${REPO_ROOT}"
+          sleep 5
+          probe "Fileman/get_file_content (node path diag)" --get "${BASE}/Fileman/get_file_content" --data-urlencode "dir=/home/adtalk" --data-urlencode "file=deploy-diag.log"
 
           echo "Done reading all probes above."
           exit 0
