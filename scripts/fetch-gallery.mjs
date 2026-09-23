@@ -73,6 +73,22 @@ async function main() {
   console.log('[fetch-gallery] Fetching galleryImage entries from Contentful...')
   const data = await fetchEntries()
 
+  if (data.items.length === 0) {
+    const existingManifest = existsSync(manifestPath)
+      ? JSON.parse(readFileSync(manifestPath, 'utf8'))
+      : []
+    if (existingManifest.length > 0) {
+      console.error(
+        `[fetch-gallery] Contentful returned 0 published galleryImage entries, but ` +
+        `${existingManifest.length} are currently in the manifest. Refusing to wipe ` +
+        `existing gallery content — this usually means entries were unpublished by ` +
+        `mistake, or the space/environment/token is misconfigured. Re-publish the ` +
+        `entries (or fix the credentials) and re-run this script.`
+      )
+      process.exit(1)
+    }
+  }
+
   const assetsById = new Map(
     (data.includes?.Asset || []).map((asset) => [asset.sys.id, asset])
   )
