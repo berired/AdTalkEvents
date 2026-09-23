@@ -34,6 +34,6 @@ jobs:
           lftp -u "$FTP_USERNAME,$FTP_PASSWORD" "$FTP_HOST" -e "
             set ftp:ssl-force true;
             set ssl:verify-certificate no;
-            mirror -R --verbose dist/ ./;
+            mirror -R --verbose dist/ public_html/;
             bye
           "
