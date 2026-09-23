@@ -1,0 +1,45 @@
+name: Deploy to cPanel
+
+on:
+  push:
+    branches: [master]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Pull latest into cPanel repository checkout
+        env:
+          CPANEL_HOST: ${{ secrets.CPANEL_HOST }}
+          CPANEL_USERNAME: ${{ secrets.CPANEL_USERNAME }}
+          CPANEL_API_TOKEN: ${{ secrets.CPANEL_API_TOKEN }}
+          REPO_ROOT: /home/adtalk/repositories/AdTalkEvents
+        run: |
+          set -e
+          AUTH="cpanel ${CPANEL_USERNAME}:${CPANEL_API_TOKEN}"
+
+          echo "== Updating repository from remote =="
+          curl -sS -H "Authorization: ${AUTH}" \
+            --get "https://${CPANEL_HOST}:2083/execute/Git/update" \
+            --data-urlencode "repository_root=${REPO_ROOT}" \
+            -o update.json
+          cat update.json
+          UPDATE_STATUS=$(jq -r '.status' update.json)
+          if [ "$UPDATE_STATUS" != "1" ]; then
+            echo "::error::cPanel Git/update failed"
+            exit 1
+          fi
+
+          echo "== Deploying HEAD commit =="
+          curl -sS -H "Authorization: ${AUTH}" \
+            --get "https://${CPANEL_HOST}:2083/execute/Git/deploy" \
+            --data-urlencode "repository_root=${REPO_ROOT}" \
+            -o deploy.json
+          cat deploy.json
+          DEPLOY_STATUS=$(jq -r '.status' deploy.json)
+          if [ "$DEPLOY_STATUS" != "1" ]; then
+            echo "::error::cPanel Git/deploy failed"
+            exit 1
+          fi
+
+          echo "Deployed successfully."
