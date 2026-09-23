@@ -144,7 +144,6 @@
   line-height: 1.8;
   color: var(--color-muted);
   margin-bottom: 2rem;
-  white-space: pre-line;
 }
 
 .subcategory-highlights {

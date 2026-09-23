@@ -105,7 +105,6 @@
   line-height: 1.8;
   color: var(--color-muted);
   margin-bottom: 3rem;
-  white-space: pre-line;
 }
 
 .subcategories-section {
@@ -157,7 +156,6 @@
   color: var(--color-muted);
   line-height: 1.6;
   margin-bottom: 1rem;
-  white-space: pre-line;
 }
 
 .learn-more-text {

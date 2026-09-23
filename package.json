@@ -8,7 +8,7 @@
     "build": "vite build",
     "postbuild": "node scripts/copy-prerendered.mjs",
     "fetch-gallery": "node scripts/fetch-gallery.mjs",
-    "fetch-services": "node scripts/fetch-services.mjs",
+    "fetch-service-images": "node scripts/fetch-service-images.mjs",
     "lint": "eslint .",
     "preview": "vite preview"
   },
