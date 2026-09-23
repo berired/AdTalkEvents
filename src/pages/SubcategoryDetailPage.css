@@ -143,7 +143,37 @@
   font-size: 1.1rem;
   line-height: 1.8;
   color: var(--color-muted);
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
+  white-space: pre-line;
+}
+
+.subcategory-highlights {
+  list-style: none;
+  max-width: 720px;
+  margin: 0 auto 3rem auto;
+  padding: 0;
+  display: grid;
+  gap: 0.9rem;
+  text-align: left;
+}
+
+.subcategory-highlights li {
+  position: relative;
+  padding-left: 1.75rem;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--color-text);
+}
+
+.subcategory-highlights li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.55rem;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--color-primary);
 }
 
 @keyframes sectionFadeIn {

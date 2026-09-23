@@ -34,7 +34,7 @@ body {
   transition: color 0.3s, transform 0.2s;
 }
 
-.navbar-logo:hover, .navbar-logo:focus {
+.navbar-logo:hover {
   color: #fff6f6;
   transform: scale(1.07);
 }
@@ -69,13 +69,6 @@ body {
   transform: scale(1.08);
 }
 
-.nav-link:focus-visible {
-  outline: 2px solid #fff;
-  outline-offset: 4px;
-  border-radius: 2px;
-  color: #fff6f6;
-}
-
 .nav-link.active {
   font-weight: 700;
   text-decoration: underline;
@@ -106,7 +99,7 @@ body {
   transition: none;
 }
 
-.hamburger:hover, .hamburger:focus {
+.hamburger:hover {
   background: none;
   border: none;
 }

@@ -2,37 +2,23 @@ import { useState, useRef, useEffect } from 'react'
 import './Gallery.css'
 import Seo from '../components/Seo'
 import { breadcrumbList } from '../lib/seoSchema'
+import galleryManifest from '../data/gallery-manifest.json'
 
-// Import gallery images
-import img1 from '../assets/gallery/1.webp'
-import img2 from '../assets/gallery/2.webp'
-import img3 from '../assets/gallery/3.webp'
-import img4 from '../assets/gallery/4.png'
-import img5 from '../assets/gallery/5.png'
-import img6 from '../assets/gallery/6.png'
-import img7 from '../assets/gallery/7.png'
-import img8 from '../assets/gallery/8.png'
-import img9 from '../assets/gallery/9.png'
-import img10 from '../assets/gallery/10.png'
-import img11 from '../assets/gallery/11.webp'
-import img12 from '../assets/gallery/12.png'
-import img13 from '../assets/gallery/13.webp'
+// Images + captions come from Contentful. Run `npm run fetch-gallery` after
+// changing content in Contentful to regenerate src/assets/gallery-cms/ and
+// src/data/gallery-manifest.json, then commit the result.
+const galleryImageModules = import.meta.glob('../assets/gallery-cms/*.{png,jpg,jpeg,webp,gif}', {
+  eager: true,
+  import: 'default',
+})
 
-const images = [
-  img1,
-  img2,
-  img3,
-  img4,
-  img5,
-  img6,
-  img7,
-  img8,
-  img9,
-  img10,
-  img11,
-  img12,
-  img13
-]
+const imagesByFile = Object.fromEntries(
+  Object.entries(galleryImageModules).map(([path, src]) => [path.split('/').pop(), src])
+)
+
+const images = galleryManifest
+  .map(({ file, caption }) => ({ file, src: imagesByFile[file], caption }))
+  .filter((item) => item.src)
 
 function Gallery() {
   const [modalOpen, setModalOpen] = useState(false)
@@ -77,25 +63,29 @@ function Gallery() {
       />
       <h1 className="gallery-title">Gallery</h1>
       <br />
-      <div className="gallery-grid">
-        {images.map((img, idx) => (
-          <button
-            key={idx}
-            type="button"
-            className="gallery-item"
-            onClick={(e) => openModal(idx, e.currentTarget)}
-          >
-            <img src={img} alt={`Event ${idx + 1}`} loading="lazy" />
-          </button>
-        ))}
-      </div>
+      {images.length === 0 ? (
+        <p className="gallery-empty">Gallery photos coming soon.</p>
+      ) : (
+        <div className="gallery-grid">
+          {images.map((img, idx) => (
+            <button
+              key={img.file || idx}
+              type="button"
+              className="gallery-item"
+              onClick={(e) => openModal(idx, e.currentTarget)}
+            >
+              <img src={img.src} alt={img.caption || `Event ${idx + 1}`} loading="lazy" />
+            </button>
+          ))}
+        </div>
+      )}
       {modalOpen && (
         <div className="gallery-modal" onClick={closeModal}>
           <div
             className="gallery-modal-content"
             role="dialog"
             aria-modal="true"
-            aria-label={`Event photo ${selectedIdx + 1}`}
+            aria-label={images[selectedIdx].caption || `Event photo ${selectedIdx + 1}`}
             onClick={e => e.stopPropagation()}
           >
             <button
@@ -106,7 +96,13 @@ function Gallery() {
             >
               &times;
             </button>
-            <img src={images[selectedIdx]} alt={`Event ${selectedIdx + 1} enlarged`} />
+            <img
+              src={images[selectedIdx].src}
+              alt={images[selectedIdx].caption || `Event ${selectedIdx + 1} enlarged`}
+            />
+            {images[selectedIdx].caption && (
+              <p className="gallery-modal-caption">{images[selectedIdx].caption}</p>
+            )}
           </div>
         </div>
       )}

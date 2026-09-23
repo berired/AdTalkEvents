@@ -116,6 +116,16 @@
   line-height: 1.6;
   margin-bottom: 1.5rem;
   flex-grow: 1;
+  white-space: pre-line;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.services-empty {
+  text-align: center;
+  color: var(--color-muted);
 }
 
 .learn-more-btn {

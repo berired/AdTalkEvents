@@ -2,84 +2,29 @@ import { useNavigate } from 'react-router-dom'
 import './Services.css'
 import Seo from '../components/Seo'
 import { breadcrumbList } from '../lib/seoSchema'
+import servicesManifest from '../data/services-manifest.json'
 
-import nationwideManpowerImage1 from '../assets/nationwide manpower/nationwide manpower deployment.webp'
-import nationwideManpowerImage2 from '../assets/nationwide manpower/nationwide manpower deployment - 2.png'
-import nationwideManpowerImage3 from '../assets/nationwide manpower/nationwide manpower deployment - 3.webp'
+// Content + images come from Contentful. Run `npm run fetch-services` after
+// changing content in Contentful to regenerate src/assets/services-cms/ and
+// src/data/services-manifest.json, then commit the result.
+const serviceImageModules = import.meta.glob('../assets/services-cms/*.{png,jpg,jpeg,webp,gif}', {
+  eager: true,
+  import: 'default',
+})
 
-import nationwideTrainingImage1 from '../assets/nationwide training/nationwide training1.webp'
-import nationwideTrainingImage2 from '../assets/nationwide training/nationwide training2.webp'
-import nationwideTrainingImage3 from '../assets/nationwide training/nationwide training3.webp'
+const imagesByFile = Object.fromEntries(
+  Object.entries(serviceImageModules).map(([path, src]) => [path.split('/').pop(), src])
+)
 
-import nationwidesellingImage1 from '../assets/selling activity/nationwide selling.png'
-import nationwidesellingImage2 from '../assets/selling activity/nationwide selling - 2.png'
-import nationwidesellingImage3 from '../assets/selling activity/nationwide selling - 3.webp'
-
-import posmImage1 from '../assets/gallery/7.png'
-import posmImage2 from '../assets/gallery/8.png'
-import posmImage3 from '../assets/gallery/9.png'
-
+const services = servicesManifest.map((service) => ({
+  id: service.slug,
+  title: service.title,
+  description: service.description,
+  images: (service.images || []).map((file) => imagesByFile[file]).filter(Boolean),
+}))
 
 function Services() {
   const navigate = useNavigate()
-
-  const services = [
-    {
-      id: 'nationwide-manpower-deployment',
-      title: 'Nationwide Manpower Deployment',
-      description: 'Skilled personnel deployment including flyering agents, sales associates, merchandisers, samplers, push girls, and brand ambassadors.',
-      image1: nationwideManpowerImage1,
-      image2: nationwideManpowerImage2,
-      image3: nationwideManpowerImage3,
-      subcategories: [
-        {
-          title: 'Sales Associates & Merchandisers',
-          description: 'Skilled retail professionals ensuring optimal product placement and customer engagement in retail environments.'
-        },
-        {
-          title: 'Brand Ambassadors',
-          description: 'Professional brand representatives trained to embody your brand values and engage with customers effectively.',
-          subItems: ['Class A - Premium brand representatives', 'Class B - Standard brand ambassadors', 'Class C - Entry-level brand promoters']
-        },
-        {
-          title: 'Flyering Agents',
-          description: 'Professional distribution specialists for promotional materials and brand awareness campaigns.'
-        },
-        {
-          title: 'Promoter | Sampler | Push Girl | Helper',
-          description: 'Experienced sampling specialists and promotional staff driving product trial and consumer interaction.'
-        }
-      ]
-    },
-    {
-      id: 'nationwide-training-capabilities',
-      title: 'Nationwide Training Capabilities',
-      description: 'We can train your team nationwide, ensuring consistent brand messaging and product knowledge across all locations.',
-      image1: nationwideTrainingImage1,
-      image2: nationwideTrainingImage2,
-      image3: nationwideTrainingImage3
-    },
-    {
-      id: 'nationwide-sampling-selling-and-merchandising',
-      title: 'Nationwide Sampling, Selling & Merchandising',
-      description: 'Executing and overseeing the activity with seasoned team lead and account executives from our team.',
-      image1: nationwidesellingImage1,
-      image2: nationwidesellingImage2,
-      image3: nationwidesellingImage3
-    },
-    {
-      id: 'onground-brandactivity-deployment-posminstallation-and-management-for-generaltrade-and-keyaccounts',
-      title: (
-        <>
-          On-Ground Brand Activity Deployment<br />POSM Installation & Management for General Trade and Key Account
-        </>
-      ),
-      description: 'Professional merchandising installation services for general trade outlets and key account establishments.',
-      image1: posmImage1,
-      image2: posmImage2,
-      image3: posmImage3
-    }
-  ]
 
   const handleServiceClick = (serviceId) => {
     // Navigate to the ServiceDetailPage route instead of using hash navigation
@@ -102,23 +47,27 @@ function Services() {
           We provide comprehensive brand activation and promotional solutions with nationwide reach, delivering exceptional results through strategic planning and professional execution. <br /> Photos may be provided upon request.
         </p>
       </div>
-      
-      <div className="services-grid">
-        {services.map((service) => (
-          <div key={service.id} className="service-item" onClick={() => handleServiceClick(service.id)}>
-            <div className="service-images">
-              <img src={service.image1} alt={`${service.title} 1`} loading="lazy" />
-              <img src={service.image2} alt={`${service.title} 2`} loading="lazy" />
-              <img src={service.image3} alt={`${service.title} 3`} loading="lazy" />
+
+      {services.length === 0 ? (
+        <p className="services-empty">Services coming soon.</p>
+      ) : (
+        <div className="services-grid">
+          {services.map((service) => (
+            <div key={service.id} className="service-item" onClick={() => handleServiceClick(service.id)}>
+              <div className="service-images">
+                {service.images.map((src, idx) => (
+                  <img key={idx} src={src} alt={`${service.title} ${idx + 1}`} loading="lazy" />
+                ))}
+              </div>
+              <div className="service-info">
+                <h3>{service.title}</h3>
+                <p>{service.description}</p>
+                <button className="learn-more-btn">Learn More</button>
+              </div>
             </div>
-            <div className="service-info">
-              <h3>{service.title}</h3>
-              <p>{service.description}</p>
-              <button className="learn-more-btn">Learn More</button>
-            </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+      )}
     </div>
   )
 }

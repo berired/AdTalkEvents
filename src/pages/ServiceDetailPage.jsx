@@ -4,105 +4,39 @@ import ServiceDetail from '../components/ServiceDetail'
 import Seo from '../components/Seo'
 import { breadcrumbList, serviceSchema } from '../lib/seoSchema'
 import './ServiceDetailPage.css'
+import servicesManifest from '../data/services-manifest.json'
 
-import nationwideManpowerImage1 from '../assets/nationwide manpower/nationwide manpower deployment.webp'
-import nationwideManpowerImage2 from '../assets/nationwide manpower/nationwide manpower deployment - 2.png'
-import nationwideManpowerImage3 from '../assets/nationwide manpower/nationwide manpower deployment - 3.webp'
+// Content + images come from Contentful. Run `npm run fetch-services` after
+// changing content in Contentful to regenerate src/assets/services-cms/ and
+// src/data/services-manifest.json, then commit the result.
+const serviceImageModules = import.meta.glob('../assets/services-cms/*.{png,jpg,jpeg,webp,gif}', {
+  eager: true,
+  import: 'default',
+})
 
-import nationwideTrainingImage1 from '../assets/nationwide training/nationwide training1.webp'
-import nationwideTrainingImage2 from '../assets/nationwide training/nationwide training2.webp'
-import nationwideTrainingImage3 from '../assets/nationwide training/nationwide training3.webp'
+const imagesByFile = Object.fromEntries(
+  Object.entries(serviceImageModules).map(([path, src]) => [path.split('/').pop(), src])
+)
 
-import nationwidesellingImage1 from '../assets/selling activity/nationwide selling.png'
-import nationwidesellingImage2 from '../assets/selling activity/nationwide selling - 2.png'
-import nationwidesellingImage3 from '../assets/selling activity/nationwide selling - 3.webp'
+function resolveImages(files) {
+  return (files || []).map((file) => imagesByFile[file]).filter(Boolean)
+}
 
-import posmImage1 from '../assets/gallery/7.png'
-import posmImage2 from '../assets/gallery/8.png'
-import posmImage3 from '../assets/gallery/9.png'
+const servicesData = servicesManifest.map((service) => ({
+  id: service.slug,
+  title: service.title,
+  description: service.description,
+  images: resolveImages(service.images),
+  subcategories: (service.subcategories || []).map((sub) => ({
+    id: sub.slug,
+    title: sub.title,
+    description: sub.description,
+    images: resolveImages(sub.images),
+  })),
+}))
 
 function ServiceDetailPage() {
   const { id } = useParams()
-
-  const servicesData = [
-    {
-      id: 'nationwide-manpower-deployment',
-      title: 'Nationwide Manpower Deployment',
-      description: "Depending on the client's requirements, our team makes a strategic process of allocating and utilizing a workforce to effectively meet organizational goals and project requirements. Skilled personnel such as promoter, sampler, push girl, sales associate, merchandiser, brand ambassadors.",
-      image1: nationwideManpowerImage1,
-      image2: nationwideManpowerImage2,
-      image3: nationwideManpowerImage3,
-      subcategories: [
-        {
-          id: 'promoter-sampler-push-girl-helper',
-          title: 'Promoter | Sampler | Push Girl | Helper',
-          description: 'Experienced sampling specialists and promotional staff driving product trial and consumer interaction.'
-        },
-        {
-          id: 'sales-associates-merchandisers',
-          title: 'Sales Associate | Merchandisers',
-          description: 'Skilled retail professionals ensuring optimal product placement and customer engagement in retail environments.'
-        },
-        {
-          id: 'brand-ambassadors',
-          title: 'Brand Ambassadors',
-          description: 'Professional brand representatives trained to embody your brand values and engage with customers effectively.',
-          subItems: ['Class A - Premium brand representatives', 'Class B - Standard brand ambassadors']
-        },
-      ]
-    },
-    {
-      id: 'nationwide-training-capabilities',
-      title: 'Nationwide Training Capabilities',
-      description: 'With our nationwide reach and satellite offices, nationwide training can enhance job satisfaction, With our nationwide reach and satellite offices, our nationwide training programs can enhance job satisfaction, boost sales and productivity, and ultimately improve employee retention. In addition, we identify and secure professional, corporate training spaces across the country to ensure every session is conducted in a polished, business-appropriate environment. sales and productivity, and lastly improve employee retention.',
-      image1: nationwideTrainingImage1,
-      image2: nationwideTrainingImage2,
-      image3: nationwideTrainingImage3
-    },
-    {
-      id: 'nationwide-sampling-selling-and-merchandising',
-      title: 'Nationwide Sampling, Selling & Merchandising',
-      description: 'Executing and overseeing the activity with seasoned team lead and account executives from our team.',
-      image1: nationwidesellingImage1,
-      image2: nationwidesellingImage2,
-      image3: nationwidesellingImage3
-    },
-    {
-      id: 'onground-brandactivity-deployment-posminstallation-and-management-for-generaltrade-and-keyaccounts',
-      title: (
-        <>
-          On-Ground Brand Activity Deployment<br />POSM Installation & Management for General Trade and Key Account
-        </>
-      ),
-      description: 'Professional merchandising installation services for general trade outlets and key account establishments.',
-      image1: posmImage1,
-      image2: posmImage2,
-      image3: posmImage3,
-      subcategories: [
-        {
-          id: 'interactive-installations',
-          title: 'Interactive Installations',
-          description: 'Engaging and interactive installations that enhance customer experience and brand visibility.'
-        },
-        {
-          id: 'pop-up-shops',
-          title: 'Pop-Up Shops',
-          description: 'Temporary retail spaces designed to create unique shopping experiences and promote brand engagement.'
-        },
-        {
-          id: 'community-partnerships',
-          title: 'Community Partnerships',
-          description: 'Collaborative efforts with local businesses and organizations to enhance brand presence and community engagement.'
-        },
-        {
-          id: 'gamified-engagement-campaigns',
-          title: 'Gamified Engagement Campaigns',
-          description: 'Innovative campaigns that use gamification to engage customers and promote brand loyalty.',
-        }
-      ]
-    }
-  ]
-
   const service = servicesData.find(s => s.id === id)
 
   useEffect(() => {
@@ -119,23 +53,20 @@ function ServiceDetailPage() {
     )
   }
 
-  const serviceTitle = typeof service.title === 'string'
-    ? service.title
-    : 'On-Ground Brand Activity Deployment & POSM Installation'
   const servicePath = `/services/${service.id}`
 
   return (
     <div className="service-detail-page">
       <Seo
-        title={`${serviceTitle} | AdTalk Events`}
+        title={`${service.title} | AdTalk Events`}
         description={service.description}
         structuredData={[
           breadcrumbList([
             { name: 'Home', path: '/' },
             { name: 'Services', path: '/services' },
-            { name: serviceTitle, path: servicePath },
+            { name: service.title, path: servicePath },
           ]),
-          serviceSchema({ name: serviceTitle, description: service.description, path: servicePath }),
+          serviceSchema({ name: service.title, description: service.description, path: servicePath }),
         ]}
       />
       <ServiceDetail service={service} />
