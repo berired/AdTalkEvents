@@ -28,7 +28,15 @@
   background: var(--color-bg-light);
 }
 
-/* Prevent horizontal scrollbar */
+/* Prevent horizontal scrollbar. Only html/body get overflow-x: hidden -
+   per spec, setting one overflow axis to non-visible forces the *other*
+   axis's computed value to auto (it can't stay visible), which turns the
+   element into its own scroll container the moment content overflows it
+   by even a pixel. html's overflow-y: auto is exactly the page's normal
+   scrollbar, so that's fine; a second element with the same rule (this
+   used to also be set on .home-container below) becomes a second,
+   nested scrollbar the instant its content is a pixel taller than it -
+   which is exactly what the reveal-on-scroll transforms below caused. */
 html, body {
   overflow-x: hidden;
   max-width: 100vw;
@@ -38,8 +46,22 @@ html, body {
   min-height: 100vh;
   background: var(--color-bg);
   color: var(--color-text);
-  overflow-x: hidden;
   max-width: 100vw;
+}
+
+/* Scroll reveal: sections fade/slide in once via useInView, then a
+   per-item stagger (--i, set inline) cascades their children. Only the
+   opacity transition is delayed per item so hover/tilt transforms below
+   never inherit that delay and stay instant. */
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.reveal.in-view {
+  opacity: 1;
+  transform: none;
 }
 
 /* Hero Section */
@@ -103,6 +125,7 @@ html, body {
   justify-content: center;
   gap: 3rem;
   flex-wrap: wrap;
+  margin-top: 3rem;
   opacity: 0;
   animation: fadeSlideIn 1s 0.8s forwards;
 }
@@ -166,18 +189,34 @@ html, body {
 }
 
 .service-card {
+  --reveal-y: 20px;
+  --tilt-x: 0deg;
+  --tilt-y: 0deg;
+  --tilt-scale: 1;
   background: var(--color-card);
   padding: 2rem;
   border-radius: 15px;
   text-align: center;
   box-shadow: 0 5px 15px rgba(200,35,51,0.07);
-  transition: transform 0.3s, box-shadow 0.3s;
+  opacity: 0;
+  transform: translateY(var(--reveal-y)) perspective(900px) rotateX(var(--tilt-x)) rotateY(var(--tilt-y)) scale(var(--tilt-scale));
+  transition: opacity 0.5s ease calc(var(--i, 0) * 80ms), transform 0.3s ease, box-shadow 0.3s;
   height: 100%;
+  will-change: transform;
+}
+
+.services-section.in-view .service-card {
+  opacity: 1;
+  --reveal-y: 0px;
 }
 
 .service-card:hover {
-  transform: scale(1.04);
+  --tilt-scale: 1.04;
   box-shadow: 0 15px 30px rgba(200,35,51,0.13);
+}
+
+.service-card:active {
+  --tilt-scale: 0.97;
 }
 
 .service-thumb {
@@ -338,17 +377,29 @@ html, body {
 }
 
 .why-choose-item {
+  --reveal-y: 20px;
+  --tilt-lift: 0px;
+  --tilt-x: 0deg;
+  --tilt-y: 0deg;
   background: var(--color-card);
   padding: 2rem;
   border-radius: 15px;
   box-shadow: 0 5px 20px rgba(200, 35, 51, 0.08);
-  transition: all 0.3s ease;
+  opacity: 0;
+  transform: translateY(var(--reveal-y)) translateY(var(--tilt-lift)) perspective(900px) rotateX(var(--tilt-x)) rotateY(var(--tilt-y));
+  transition: opacity 0.5s ease calc(var(--i, 0) * 80ms), transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
   text-align: left;
   border: 1px solid rgba(200, 35, 51, 0.1);
+  will-change: transform;
+}
+
+.why-choose-section.in-view .why-choose-item {
+  opacity: 1;
+  --reveal-y: 0px;
 }
 
 .why-choose-item:hover {
-  transform: translateY(-8px);
+  --tilt-lift: -8px;
   box-shadow: 0 15px 40px rgba(200, 35, 51, 0.15);
   border-color: var(--color-primary);
 }
@@ -461,28 +512,48 @@ html, body {
 }
 
 .hero-cta-btn {
+  position: relative;
   display: inline-block;
   margin: 2.5rem auto 0 auto;
   padding: 1.1rem 2.5rem;
   font-size: 1.2rem;
   font-weight: 700;
-  color: #fff;
-  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+  color: var(--color-primary);
+  background: #fff;
   border: none;
   border-radius: 30px;
-  box-shadow: 0 6px 24px 0 rgba(200,35,51,0.18);
+  box-shadow: 0 8px 24px 0 rgba(0,0,0,0.2);
   text-decoration: none;
   letter-spacing: 1px;
-  transition: background 0.3s, transform 0.2s, box-shadow 0.2s;
+  transition: background 0.3s, color 0.3s, transform 0.2s, box-shadow 0.2s;
   cursor: pointer;
   opacity: 0;
   animation: fadeSlideIn 1s 0.7s forwards;
+  overflow: hidden;
+}
+
+.hero-cta-btn::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.6), transparent);
+  transform: skewX(-20deg);
+  transition: left 0.6s ease;
+  pointer-events: none;
 }
 
 .hero-cta-btn:hover {
-  background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-primary) 100%);
+  background: var(--color-primary);
+  color: #fff;
   transform: scale(1.07);
-  box-shadow: 0 12px 32px 0 rgba(200,35,51,0.22);
+  box-shadow: 0 14px 32px 0 rgba(0,0,0,0.3);
+}
+
+.hero-cta-btn:hover::after {
+  left: 130%;
 }
 
 .stat-icon {
@@ -522,12 +593,20 @@ html, body {
 }
 
 .value-item {
+  --reveal-y: 16px;
   background: var(--color-bg-light);
   padding: 1.5rem;
   border-radius: 12px;
   text-align: center;
   box-shadow: 0 2px 8px rgba(200,35,51,0.05);
-  transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+  opacity: 0;
+  transform: translateY(var(--reveal-y));
+  transition: opacity 0.5s ease calc(var(--i, 0) * 100ms), transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+}
+
+.about-section.in-view .value-item {
+  opacity: 1;
+  --reveal-y: 0px;
 }
 
 .value-item:hover {
@@ -592,6 +671,14 @@ html, body {
   position: relative;
   text-align: left;
   padding: 0 1.5rem 0 0;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.5s ease calc(var(--i, 0) * 110ms), transform 0.5s ease calc(var(--i, 0) * 110ms);
+}
+
+.manpower-section.in-view .process-step {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .process-step:not(:last-child)::after {

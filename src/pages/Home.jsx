@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
   PartyPopper,
@@ -12,6 +13,9 @@ import {
 } from 'lucide-react';
 import './Home.css'
 import Seo from '../components/Seo'
+import { useInView } from '../hooks/useInView'
+import { useCountUp } from '../hooks/useCountUp'
+import { useTilt } from '../hooks/useTilt'
 
 // Import client logos
 import universalRobinaLogo from '../assets/company icons/universal robina logo.png'
@@ -31,6 +35,51 @@ import manpowerThumb from '../assets/nationwide manpower/nationwide manpower dep
 import trainingThumb from '../assets/nationwide training/nationwide training1.webp'
 import sellingThumb from '../assets/selling activity/nationwide selling.png'
 import posmThumb from '../assets/gallery/7.png'
+
+// Counts up from 0 once the surrounding hero-stats row scrolls into view.
+function HeroStat({ icon, value, suffix = '', label, active }) {
+  const Icon = icon;
+  const count = useCountUp(value, { start: active });
+  return (
+    <div className="stat">
+      <span className="stat-icon"><Icon size={35} aria-hidden="true" /></span>
+      <span className="stat-number">{count}{suffix}</span>
+      <span className="stat-label">{label}</span>
+    </div>
+  );
+}
+
+// Fades/slides in with its siblings (via --i stagger) and tilts toward the
+// cursor on precise-pointer devices; touch devices get neither listener.
+function ServiceCard({ service, index }) {
+  const tiltRef = useTilt();
+  return (
+    <Link
+      to={`/services/${service.id}`}
+      className="service-card-link"
+    >
+      <div className="service-card" ref={tiltRef} style={{ '--i': index }}>
+        <div className="service-thumb">
+          <img src={service.thumb} alt="" loading="lazy" />
+        </div>
+        <h3 className="service-title">{service.title}</h3>
+        <p className="service-description">{service.description}</p>
+      </div>
+    </Link>
+  );
+}
+
+function WhyChooseItem({ icon, title, description, index }) {
+  const Icon = icon;
+  const tiltRef = useTilt();
+  return (
+    <div className="why-choose-item" ref={tiltRef} style={{ '--i': index }}>
+      <div className="why-choose-icon"><Icon size={40} aria-hidden="true" /></div>
+      <h3>{title}</h3>
+      <p>{description}</p>
+    </div>
+  );
+}
 
 function Home() {
   const clients = [
@@ -79,6 +128,60 @@ function Home() {
 
   ];
 
+  const heroStats = [
+    { icon: PartyPopper, value: 1000, suffix: '+', label: 'Projects Completed' },
+    { icon: Handshake, value: clients.length, suffix: '+', label: 'Clients' },
+    { icon: Star, value: 8, suffix: '', label: 'Years of Experience' },
+  ];
+
+  const whyChooseItems = [
+    {
+      icon: Globe,
+      title: 'Nationwide Coverage & Operations',
+      description: 'Extensive coverage across Metro Manila and the provinces, with regional teams who understand local market dynamics and consumer behavior.',
+    },
+    {
+      icon: UserCheck,
+      title: 'Comprehensive Manpower Solutions',
+      description: 'A vetted roster of Class A to Class C brand ambassadors, sales associates, and merchandisers, each trained before deployment.',
+    },
+    {
+      icon: Trophy,
+      title: 'Proven Track Record with Industry Leaders',
+      description: '1,000+ projects and a 98% client satisfaction rate with partners like Universal Robina Corporation, Ford, and Casio.',
+    },
+    {
+      icon: PackageSearch,
+      title: 'Expert Merchandising & Retail Excellence',
+      description: 'Planogram-trained specialists optimizing shelf visibility, displays, and inventory across general trade and key accounts.',
+    },
+    {
+      icon: GraduationCap,
+      title: 'Professional Training & Quality Assurance',
+      description: 'Every team member completes product, sales, and brand training, backed by ongoing mystery-shopper quality checks.',
+    },
+    {
+      icon: ClipboardList,
+      title: 'Dedicated Account Management & Analytics',
+      description: 'A dedicated account executive per client, with regular reports on operations, sales performance, and market insights.',
+    },
+  ];
+
+  // Hero stats are above the fold on load, so they count up immediately
+  // instead of waiting on scroll visibility - the delay just mirrors the
+  // existing .hero-stats fade-in so the count starts as the numbers appear.
+  const [statsActive, setStatsActive] = useState(false);
+  useEffect(() => {
+    const timer = setTimeout(() => setStatsActive(true), 800);
+    return () => clearTimeout(timer);
+  }, []);
+
+  const [aboutRef, aboutInView] = useInView();
+  const [servicesRef, servicesInView] = useInView();
+  const [manpowerRef, manpowerInView] = useInView();
+  const [clientsRef, clientsInView] = useInView();
+  const [whyChooseRef, whyChooseInView] = useInView();
+
   return (
     <div className="home-container">
       <Seo
@@ -96,29 +199,17 @@ function Home() {
           </p>
 
           <Link to="/contact" className="hero-cta-btn">Plan Your Event</Link>
-          
+
           <div className="hero-stats">
-            <div className="stat">
-              <span className="stat-icon"><PartyPopper size={35} aria-hidden="true" /></span>
-              <span className="stat-number">1000+</span>
-              <span className="stat-label">Projects Completed</span>
-            </div>
-            <div className="stat">
-              <span className="stat-icon"><Handshake size={35} aria-hidden="true" /></span>
-              <span className="stat-number">{clients.length}+</span>
-              <span className="stat-label">Clients</span>
-            </div>
-            <div className="stat">
-              <span className="stat-icon"><Star size={35} aria-hidden="true" /></span>
-              <span className="stat-number">8</span>
-              <span className="stat-label">Years of Experience</span>
-            </div>
+            {heroStats.map((stat) => (
+              <HeroStat key={stat.label} {...stat} active={statsActive} />
+            ))}
           </div>
         </div>
       </section>
 
       {/* About Section */}
-      <section className="about-section">
+      <section ref={aboutRef} className={`about-section reveal${aboutInView ? ' in-view' : ''}`}>
         <div className="about-content">
           <h2 className="section-title">you talk. we Listen.</h2>
           <p className="about-description">
@@ -126,11 +217,11 @@ function Home() {
           </p>
           <div className="company-values">
             <div className="values-grid">
-              <div className="value-item">
+              <div className="value-item" style={{ '--i': 0 }}>
                 <b><h3>MISSION</h3></b>
                 <p style={{ fontSize: '1.35rem' }}>Dedicated to providing fresh results through only the best customer service.</p>
               </div>
-              <div className="value-item">
+              <div className="value-item" style={{ '--i': 1 }}>
                 <b><h3>VISION</h3></b>
                <p>Providing innovative solutions for our clients to share their vision with their customers, ushering in partnerships with clients where goals are met every step of the way</p>
 
@@ -141,51 +232,39 @@ function Home() {
       </section>
 
       {/* Services Section */}
-      <section className="services-section">
+      <section ref={servicesRef} className={`services-section reveal${servicesInView ? ' in-view' : ''}`}>
         <h2 className="section-title">OUR SPECIALIZED SERVICES</h2>
         <p className="services-intro">We provide comprehensive brand activation and promotional solutions with nationwide reach</p>
         <div className="home-services-grid">
           {services.map((service, index) => (
-            <Link 
-              key={index} 
-              to={`/services/${service.id}`}
-              className="service-card-link"
-            >
-              <div className="service-card">
-                <div className="service-thumb">
-                  <img src={service.thumb} alt="" loading="lazy" />
-                </div>
-                <h3 className="service-title">{service.title}</h3>
-                <p className="service-description">{service.description}</p>
-              </div>
-            </Link>
+            <ServiceCard key={service.id} service={service} index={index} />
           ))}
         </div>
       </section>
 
-      
+
 
       {/* Manpower Deployment Section */}
-      <section className="manpower-section">
+      <section ref={manpowerRef} className={`manpower-section reveal${manpowerInView ? ' in-view' : ''}`}>
         <h2 className="section-title">PROFESSIONAL MANPOWER DEPLOYMENT</h2>
         <p className="manpower-intro">Our skilled personnel are trained to represent your brand with excellence, through a process that runs in order:</p>
         <ol className="process-steps">
-          <li className="process-step">
+          <li className="process-step" style={{ '--i': 0 }}>
             <h3>Sourcing</h3>
             <p>We have a good number of contacts and agents that provide us a pool of quality candidates
               in line with the client's preference and requirements.
             </p>
           </li>
-          <li className="process-step">
+          <li className="process-step" style={{ '--i': 1 }}>
             <h3>Training</h3>
             <p>We make our training as comprehensive as possible, ensuring proper product knowledge, project mechanics and compliance with the rules and regulations related to the project.
             </p>
           </li>
-          <li className="process-step">
+          <li className="process-step" style={{ '--i': 2 }}>
             <h3>Managing</h3>
             <p>Seamless deployments are our main goal. Our team of dedicated managers and account executives make sure that each operation we run has zero error.</p>
           </li>
-          <li className="process-step">
+          <li className="process-step" style={{ '--i': 3 }}>
             <h3>Monitoring</h3>
             <p>Each account executive monitors daily operations and provides effective solutions to any challenge that arises, with weekly submission of accurate sales reports.</p>
           </li>
@@ -193,7 +272,7 @@ function Home() {
       </section>
 
       {/* Clients Section */}
-      <section className="clients-section">
+      <section ref={clientsRef} className={`clients-section reveal${clientsInView ? ' in-view' : ''}`}>
         <h2 className="clients-title">Trusted by Leading Companies</h2>
         <div className="clients-carousel">
           <div className="clients-track">
@@ -207,48 +286,21 @@ function Home() {
       </section>
 
       {/* Why Choose Us Section */}
-      <section className="why-choose-section">
+      <section ref={whyChooseRef} className={`why-choose-section reveal${whyChooseInView ? ' in-view' : ''}`}>
         <div className="why-choose-content">
           <h2 className="section-title">why choose AdTalk?</h2>
           <p className="why-choose-intro">
             With over 8 years of experience in the industry, we've built a reputation for excellence that sets us apart from the competition. Here's what makes us the preferred partner for leading brands across the Philippines
           </p>
           <div className="why-choose-grid">
-            <div className="why-choose-item">
-              <div className="why-choose-icon"><Globe size={40} aria-hidden="true" /></div>
-              <h3>Nationwide Coverage & Operations</h3>
-              <p>Extensive coverage across Metro Manila and the provinces, with regional teams who understand local market dynamics and consumer behavior.</p>
-            </div>
-            <div className="why-choose-item">
-              <div className="why-choose-icon"><UserCheck size={40} aria-hidden="true" /></div>
-              <h3>Comprehensive Manpower Solutions</h3>
-              <p>A vetted roster of Class A to Class C brand ambassadors, sales associates, and merchandisers, each trained before deployment.</p>
-            </div>
-            <div className="why-choose-item">
-              <div className="why-choose-icon"><Trophy size={40} aria-hidden="true" /></div>
-              <h3>Proven Track Record with Industry Leaders</h3>
-              <p>1,000+ projects and a 98% client satisfaction rate with partners like Universal Robina Corporation, Ford, and Casio.</p>
-            </div>
-            <div className="why-choose-item">
-              <div className="why-choose-icon"><PackageSearch size={40} aria-hidden="true" /></div>
-              <h3>Expert Merchandising & Retail Excellence</h3>
-              <p>Planogram-trained specialists optimizing shelf visibility, displays, and inventory across general trade and key accounts.</p>
-            </div>
-            <div className="why-choose-item">
-              <div className="why-choose-icon"><GraduationCap size={40} aria-hidden="true" /></div>
-              <h3>Professional Training & Quality Assurance</h3>
-              <p>Every team member completes product, sales, and brand training, backed by ongoing mystery-shopper quality checks.</p>
-            </div>
-            <div className="why-choose-item">
-              <div className="why-choose-icon"><ClipboardList size={40} aria-hidden="true" /></div>
-              <h3>Dedicated Account Management & Analytics</h3>
-              <p>A dedicated account executive per client, with regular reports on operations, sales performance, and market insights.</p>
-            </div>
+            {whyChooseItems.map((item, index) => (
+              <WhyChooseItem key={item.title} {...item} index={index} />
+            ))}
           </div>
         </div>
       </section>
 
-      
+
 
     </div>
   );
