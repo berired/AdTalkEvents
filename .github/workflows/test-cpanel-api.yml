@@ -7,7 +7,7 @@ jobs:
   probe:
     runs-on: ubuntu-latest
     steps:
-      - name: Probe cPanel UAPI
+      - name: Update, deploy, and read the deployment log
         env:
           CPANEL_HOST: ${{ secrets.CPANEL_HOST }}
           CPANEL_USERNAME: ${{ secrets.CPANEL_USERNAME }}
@@ -18,25 +18,34 @@ jobs:
           AUTH="cpanel ${CPANEL_USERNAME}:${CPANEL_API_TOKEN}"
           BASE="https://${CPANEL_HOST}:2083/execute"
 
-          probe() {
-            local label="$1"; shift
-            echo "############################################"
-            echo "# ${label}"
-            echo "############################################"
-            RAW=$(curl -sS -H "Authorization: ${AUTH}" "$@")
-            CURL_EXIT=$?
-            echo "curl exit code: ${CURL_EXIT}"
-            echo "raw response:"
-            echo "${RAW}"
-            echo "parsed:"
-            echo "${RAW}" | jq . 2>/dev/null || echo "(not valid JSON -- see raw response above)"
-            echo ""
-          }
+          echo "== VersionControl/update =="
+          UPDATE_RAW=$(curl -sS -H "Authorization: ${AUTH}" \
+            --get "${BASE}/VersionControl/update" \
+            --data-urlencode "repository_root=${REPO_ROOT}" \
+            --data-urlencode "branch=master")
+          echo "${UPDATE_RAW}" | jq .
 
-          probe "VersionControl/update" --get "${BASE}/VersionControl/update" --data-urlencode "repository_root=${REPO_ROOT}" --data-urlencode "branch=master"
-          probe "VersionControlDeployment/create" --get "${BASE}/VersionControlDeployment/create" --data-urlencode "repository_root=${REPO_ROOT}"
-          sleep 5
-          probe "Fileman/get_file_content (node path diag)" --get "${BASE}/Fileman/get_file_content" --data-urlencode "dir=/home/adtalk" --data-urlencode "file=deploy-diag.log"
+          echo ""
+          echo "== VersionControlDeployment/create =="
+          DEPLOY_RAW=$(curl -sS -H "Authorization: ${AUTH}" \
+            --get "${BASE}/VersionControlDeployment/create" \
+            --data-urlencode "repository_root=${REPO_ROOT}")
+          echo "${DEPLOY_RAW}" | jq .
 
-          echo "Done reading all probes above."
+          LOG_PATH=$(echo "${DEPLOY_RAW}" | jq -r '.data.log_path')
+          echo "Deployment log path: ${LOG_PATH}"
+
+          echo ""
+          echo "Waiting 45s for the build to finish (npm ci + vite build can take a while)..."
+          sleep 45
+
+          LOG_DIR=$(dirname "${LOG_PATH}")
+          LOG_FILE=$(basename "${LOG_PATH}")
+          echo "== Fileman/get_file_content (deployment log) =="
+          LOGCONTENT_RAW=$(curl -sS -H "Authorization: ${AUTH}" \
+            --get "${BASE}/Fileman/get_file_content" \
+            --data-urlencode "dir=${LOG_DIR}" \
+            --data-urlencode "file=${LOG_FILE}")
+          echo "${LOGCONTENT_RAW}" | jq -r '.data.content'
+
           exit 0
