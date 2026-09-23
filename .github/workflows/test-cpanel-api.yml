@@ -14,38 +14,28 @@ jobs:
           CPANEL_API_TOKEN: ${{ secrets.CPANEL_API_TOKEN }}
           REPO_ROOT: /home/adtalk/repositories/AdTalkEvents
         run: |
+          set +e
           AUTH="cpanel ${CPANEL_USERNAME}:${CPANEL_API_TOKEN}"
           BASE="https://${CPANEL_HOST}:2083/execute"
 
-          echo "############################################"
-          echo "# 0. Baseline auth check (near-universal module)"
-          echo "############################################"
-          curl -sS -H "Authorization: ${AUTH}" \
-            "${BASE}/Variables/get_user_information" | jq .
+          probe() {
+            local label="$1"; shift
+            echo "############################################"
+            echo "# ${label}"
+            echo "############################################"
+            RAW=$(curl -sS -H "Authorization: ${AUTH}" "$@")
+            CURL_EXIT=$?
+            echo "curl exit code: ${CURL_EXIT}"
+            echo "raw response:"
+            echo "${RAW}"
+            echo "parsed:"
+            echo "${RAW}" | jq . 2>/dev/null || echo "(not valid JSON -- see raw response above)"
+            echo ""
+          }
 
-          echo ""
-          echo "############################################"
-          echo "# 1. Git/update"
-          echo "############################################"
-          curl -sS -H "Authorization: ${AUTH}" \
-            --get "${BASE}/Git/update" \
-            --data-urlencode "repository_root=${REPO_ROOT}" | jq .
+          probe "Git/update" --get "${BASE}/Git/update" --data-urlencode "repository_root=${REPO_ROOT}"
+          probe "VersionControl/update" --get "${BASE}/VersionControl/update" --data-urlencode "repository_root=${REPO_ROOT}"
+          probe "VersionControl/deploy" --get "${BASE}/VersionControl/deploy" --data-urlencode "repository_root=${REPO_ROOT}"
 
-          echo ""
-          echo "############################################"
-          echo "# 2. VersionControl/update"
-          echo "############################################"
-          curl -sS -H "Authorization: ${AUTH}" \
-            --get "${BASE}/VersionControl/update" \
-            --data-urlencode "repository_root=${REPO_ROOT}" | jq .
-
-          echo ""
-          echo "############################################"
-          echo "# 3. VersionControl/deploy"
-          echo "############################################"
-          curl -sS -H "Authorization: ${AUTH}" \
-            --get "${BASE}/VersionControl/deploy" \
-            --data-urlencode "repository_root=${REPO_ROOT}" | jq .
-
-          echo ""
-          echo "Done. None of these steps fail the job on purpose -- read the JSON above."
+          echo "Done reading all probes above."
+          exit 0
