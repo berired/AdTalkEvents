@@ -103,7 +103,14 @@ function ServiceDetailPage() {
       ]
     }
   ].map((service) => {
-    const [image1, image2, image3] = resolveServiceImages(service.id, [service.image1, service.image2, service.image3])
+    const titleText = typeof service.title === 'string'
+      ? service.title
+      : 'On-Ground Brand Activity Deployment & POSM Installation'
+    const [image1, image2, image3] = resolveServiceImages(service.id, [
+      { src: service.image1, alt: `${titleText} - Image 1` },
+      { src: service.image2, alt: `${titleText} - Image 2` },
+      { src: service.image3, alt: `${titleText} - Image 3` },
+    ])
     return { ...service, image1, image2, image3 }
   })
 

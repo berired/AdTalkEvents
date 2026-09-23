@@ -2,7 +2,12 @@
 // real files in the repo: downloaded images in src/assets/service-images-cms/
 // and a flat manifest at src/data/service-images-manifest.json, keyed by
 // each entry's `key` (slug) field, e.g.:
-//   { "nationwide-manpower-deployment": ["<id>-1.webp", "<id>-2.png", ...] }
+//   { "nationwide-manpower-deployment": [{ "file": "...-1.webp", "alt": "..." }, ...] }
+//
+// Alt text comes from each image ASSET's own "Description" field in
+// Contentful's Media Library (not a field on the entry) — that's the
+// standard place Contentful editors put alt text, and it's reused
+// automatically if the same asset is used in multiple entries.
 //
 // src/lib/serviceImages.js reads this manifest at build time and falls back
 // to the existing hardcoded local images for any key not present, so the
@@ -79,6 +84,24 @@ async function fetchEntries() {
 async function main() {
   console.log('[fetch-service-images] Fetching serviceImageSet entries from Contentful...')
   const data = await fetchEntries()
+
+  if (data.items.length === 0) {
+    const existingManifest = existsSync(manifestPath)
+      ? JSON.parse(readFileSync(manifestPath, 'utf8'))
+      : {}
+    const existingKeyCount = Object.keys(existingManifest).length
+    if (existingKeyCount > 0) {
+      console.error(
+        `[fetch-service-images] Contentful returned 0 published serviceImageSet entries, ` +
+        `but ${existingKeyCount} key(s) are currently in the manifest. Refusing to wipe ` +
+        `existing service images — this usually means entries were unpublished by ` +
+        `mistake, or the space/environment/token is misconfigured. Re-publish the ` +
+        `entries (or fix the credentials) and re-run this script.`
+      )
+      process.exit(1)
+    }
+  }
+
   const assetsById = new Map((data.includes?.Asset || []).map((a) => [a.sys.id, a]))
 
   mkdirSync(assetsDir, { recursive: true })
@@ -111,6 +134,10 @@ async function main() {
       const fileUrl = assetUrl.startsWith('//') ? `https:${assetUrl}` : assetUrl
       const ext = extensionFor(asset.fields.file.fileName, asset.fields.file.contentType)
       const fileName = `${key}-${i}${ext}`
+      const alt = asset.fields.description?.trim() || asset.fields.title?.trim() || ''
+      if (!alt) {
+        console.warn(`[fetch-service-images] Entry ${entry.sys.id} ("${key}"): image ${i} has no Description/Title set on the asset — alt text will be empty.`)
+      }
 
       const imageRes = await fetch(fileUrl)
       if (!imageRes.ok) {
@@ -119,7 +146,7 @@ async function main() {
       }
       writeFileSync(join(assetsDir, fileName), Buffer.from(await imageRes.arrayBuffer()))
       keepFiles.add(fileName)
-      files.push(fileName)
+      files.push({ file: fileName, alt })
     }
 
     manifest[key] = files

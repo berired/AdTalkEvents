@@ -108,7 +108,11 @@ function SubcategoryDetailPage() {
 
   Object.values(subcategoriesData).forEach((subcategoriesForService) => {
     Object.entries(subcategoriesForService).forEach(([key, sub]) => {
-      const [image1, image2, image3] = resolveServiceImages(key, [sub.image1, sub.image2, sub.image3])
+      const [image1, image2, image3] = resolveServiceImages(key, [
+        { src: sub.image1, alt: `${sub.title} - Image 1` },
+        { src: sub.image2, alt: `${sub.title} - Image 2` },
+        { src: sub.image3, alt: `${sub.title} - Image 3` },
+      ])
       sub.image1 = image1
       sub.image2 = image2
       sub.image3 = image3
@@ -162,13 +166,13 @@ function SubcategoryDetailPage() {
 
         <div className="subcategory-images-grid">
           <div className="subcategory-image-item subcategory-image-1">
-            <img src={subcategory.image1} alt={`${subcategory.title} - Image 1`} loading="lazy" />
+            <img src={subcategory.image1.src} alt={subcategory.image1.alt} loading="lazy" />
           </div>
           <div className="subcategory-image-item subcategory-image-2">
-            <img src={subcategory.image2} alt={`${subcategory.title} - Image 2`} loading="lazy" />
+            <img src={subcategory.image2.src} alt={subcategory.image2.alt} loading="lazy" />
           </div>
           <div className="subcategory-image-item subcategory-image-3 landscape-image">
-            <img src={subcategory.image3} alt={`${subcategory.title} - Image 3`} loading="lazy" />
+            <img src={subcategory.image3.src} alt={subcategory.image3.alt} loading="lazy" />
           </div>
         </div>
 

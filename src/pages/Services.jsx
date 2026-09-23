@@ -81,7 +81,11 @@ function Services() {
       image3: posmImage3
     }
   ].map((service) => {
-    const [image1, image2, image3] = resolveServiceImages(service.id, [service.image1, service.image2, service.image3])
+    const [image1, image2, image3] = resolveServiceImages(service.id, [
+      { src: service.image1, alt: `${service.title} 1` },
+      { src: service.image2, alt: `${service.title} 2` },
+      { src: service.image3, alt: `${service.title} 3` },
+    ])
     return { ...service, image1, image2, image3 }
   })
 
@@ -111,9 +115,9 @@ function Services() {
         {services.map((service) => (
           <div key={service.id} className="service-item" onClick={() => handleServiceClick(service.id)}>
             <div className="service-images">
-              <img src={service.image1} alt={`${service.title} 1`} loading="lazy" />
-              <img src={service.image2} alt={`${service.title} 2`} loading="lazy" />
-              <img src={service.image3} alt={`${service.title} 3`} loading="lazy" />
+              <img src={service.image1.src} alt={service.image1.alt} loading="lazy" />
+              <img src={service.image2.src} alt={service.image2.alt} loading="lazy" />
+              <img src={service.image3.src} alt={service.image3.alt} loading="lazy" />
             </div>
             <div className="service-info">
               <h3>{service.title}</h3>

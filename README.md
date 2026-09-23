@@ -36,7 +36,9 @@ Titles, descriptions, and subcategories on the Services pages stay hardcoded in 
 - `key` — Short text, required, Appearance set to **Slug** (generated from `title`) — must match one of the fixed keys below exactly, since that's how the code matches an entry to its slot on the site
 - `images` — Media, many files, required (up to 3, in display order)
 
-**Keys (must match exactly — auto-generated slugs work for most, but two need manual overrides):**
+Alt text isn't a field on this content type — it comes from each image **asset's own Description field** in Contentful's Media Library (falls back to a generic generated alt if left blank).
+
+**Keys** are the same identifier used in the page's URL (e.g. `/services/nationwide-manpower-deployment` → key `nationwide-manpower-deployment`; `/services/.../subcategory/promoter-sampler-push-girl-helper` → key `promoter-sampler-push-girl-helper`). Must match exactly — auto-generated slugs work for most, but two need manual overrides:
 - `nationwide-manpower-deployment`
 - `nationwide-training-capabilities`
 - `nationwide-sampling-selling-and-merchandising` (auto-gen from title drops "&", won't match — set manually)
