@@ -1,0 +1,16 @@
+# Serve the pre-rendered snapshot or asset for a path if one exists on disk;
+# otherwise fall back to the SPA shell so React Router can handle the route
+# client-side (covers any service/subcategory combo not captured under
+# prerendered/, and any future route).
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  RewriteCond %{REQUEST_FILENAME} -f
+  RewriteRule ^ - [L]
+
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  RewriteRule ^ index.html [L]
+</IfModule>

@@ -1,0 +1,7 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/adtalk/public_html/
+    - /usr/bin/npm ci
+    - /usr/bin/npm run build
+    - /bin/cp -r dist/. $DEPLOYPATH
