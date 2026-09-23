@@ -33,11 +33,7 @@ jobs:
             echo ""
           }
 
-          probe "VersionControl/create_deployment" --get "${BASE}/VersionControl/create_deployment" --data-urlencode "repository_root=${REPO_ROOT}"
-          probe "VersionControl/deployment_create" --get "${BASE}/VersionControl/deployment_create" --data-urlencode "repository_root=${REPO_ROOT}"
-          probe "VersionControl/deploy_head_commit" --get "${BASE}/VersionControl/deploy_head_commit" --data-urlencode "repository_root=${REPO_ROOT}"
-          probe "VersionControl/run_deployment" --get "${BASE}/VersionControl/run_deployment" --data-urlencode "repository_root=${REPO_ROOT}"
-          probe "VersionControlDeployment/create" --get "${BASE}/VersionControlDeployment/create" --data-urlencode "repository_root=${REPO_ROOT}"
+          probe "VersionControl/update (check last_deployment)" --get "${BASE}/VersionControl/update" --data-urlencode "repository_root=${REPO_ROOT}"
 
           echo "Done reading all probes above."
           exit 0
