@@ -1,0 +1,54 @@
+name: Sync Contentful content
+
+# Triggered by a Contentful webhook (POST to the GitHub "dispatches" API with
+# event_type: contentful-publish) whenever a galleryImage or serviceImageSet
+# entry is published, unpublished, or deleted. Pulls the latest content,
+# commits it if anything changed, and pushes to master — which then triggers
+# the existing "Deploy to cPanel" workflow automatically.
+on:
+  repository_dispatch:
+    types: [contentful-publish]
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: master
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Fetch gallery content
+        env:
+          CONTENTFUL_SPACE_ID: ${{ secrets.CONTENTFUL_SPACE_ID }}
+          CONTENTFUL_ACCESS_TOKEN: ${{ secrets.CONTENTFUL_ACCESS_TOKEN }}
+        run: npm run fetch-gallery
+
+      - name: Fetch service images
+        env:
+          CONTENTFUL_SPACE_ID: ${{ secrets.CONTENTFUL_SPACE_ID }}
+          CONTENTFUL_ACCESS_TOKEN: ${{ secrets.CONTENTFUL_ACCESS_TOKEN }}
+        run: npm run fetch-service-images
+
+      - name: Commit and push if content changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add src/assets/gallery-cms src/data/gallery-manifest.json src/assets/service-images-cms src/data/service-images-manifest.json
+          if git diff --cached --quiet; then
+            echo "No content changes from Contentful."
+          else
+            git commit -m "Sync content from Contentful"
+            git push origin HEAD:master
+          fi
