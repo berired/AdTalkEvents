@@ -2,7 +2,7 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/home/adtalk/public_html/
-    - bash -c '{ for v in 24 22 20 18; do echo "--alt-nodejs$v/root/usr/bin--"; ls /opt/alt/alt-nodejs$v/root/usr/bin/ 2>&1 | grep -E "^(node|npm)$"; /opt/alt/alt-nodejs$v/root/usr/bin/node --version 2>&1; done; } > /home/adtalk/deploy-diag.log 2>&1'
-    - /usr/bin/npm ci
-    - /usr/bin/npm run build
+    - export NODEBIN=/opt/alt/alt-nodejs20/root/usr/bin
+    - $NODEBIN/npm ci
+    - $NODEBIN/npm run build
     - /bin/cp -r dist/. $DEPLOYPATH
