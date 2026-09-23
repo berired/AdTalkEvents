@@ -2,7 +2,7 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/home/adtalk/public_html/
-    - export NODEBIN=/opt/alt/alt-nodejs20/root/usr/bin
-    - $NODEBIN/npm ci
-    - $NODEBIN/npm run build
+    - export PATH=/opt/alt/alt-nodejs20/root/usr/bin:$PATH
+    - npm ci
+    - npm run build
     - /bin/cp -r dist/. $DEPLOYPATH
